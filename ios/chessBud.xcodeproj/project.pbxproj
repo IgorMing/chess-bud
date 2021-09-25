@@ -14,7 +14,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D61949608422D06E0F1A6FCF /* libPods-chessBud-chessBudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0C8C098677238A1A2B0CD1 /* libPods-chessBud-chessBudTests.a */; };
 		E0DA27540BCFA9EA9F860E05 /* libPods-chessBud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1FC5201C990AFE952380E9 /* libPods-chessBud.a */; };
-		ED5643E026FBE59200098EE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED5643DF26FBE59200098EE5 /* GoogleService-Info.plist */; };
+		EDB75E4726FE5D1300092B6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED5643DF26FBE59200098EE5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +46,9 @@
 		ED0A34B101EE108D66347ED8 /* Pods-chessBud-chessBudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chessBud-chessBudTests.release.xcconfig"; path = "Target Support Files/Pods-chessBud-chessBudTests/Pods-chessBud-chessBudTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED5643DF26FBE59200098EE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDB75E6F26FF9EE800092B6E /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		EDB75E7226FF9EE800092B6E /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		EDB75E7526FF9EE800092B6E /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				EDB75E6926FF9EE800092B6E /* Fonts */,
 				ED5643DF26FBE59200098EE5 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* chessBud */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -149,6 +153,17 @@
 				ED0A34B101EE108D66347ED8 /* Pods-chessBud-chessBudTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		EDB75E6926FF9EE800092B6E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EDB75E6F26FF9EE800092B6E /* MaterialCommunityIcons.ttf */,
+				EDB75E7226FF9EE800092B6E /* Ionicons.ttf */,
+				EDB75E7526FF9EE800092B6E /* FontAwesome.ttf */,
+			);
+			name = Fonts;
+			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,9 +261,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB75E4726FE5D1300092B6E /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				ED5643E026FBE59200098EE5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
