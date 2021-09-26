@@ -1,12 +1,11 @@
+import {Layout, Text} from '@ui-kitten/components';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import {Text} from 'react-native-elements';
 
 const DetailsScreen: React.VFC = () => {
   return (
-    <SafeAreaView>
+    <Layout>
       <Text>Details screen</Text>
-    </SafeAreaView>
+    </Layout>
   );
 };
 
