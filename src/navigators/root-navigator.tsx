@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator: React.FC = () => {
   const [initializing, setInitializing] = useState<boolean>(true);
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>();
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(fbUser => {

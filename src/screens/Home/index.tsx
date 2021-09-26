@@ -1,7 +1,6 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {Button, Layout, Text} from '@ui-kitten/components';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import {Button, Text} from 'react-native-elements';
 import {RootStackParamList} from '../../navigators/types';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -12,10 +11,10 @@ const Home: React.VFC<HomeProps> = props => {
   }
 
   return (
-    <SafeAreaView>
+    <Layout>
       <Text>This is the home screen</Text>
-      <Button title="Go to details" onPress={onPress} />
-    </SafeAreaView>
+      <Button onPress={onPress}>Go to details</Button>
+    </Layout>
   );
 };
 

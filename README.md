@@ -8,6 +8,7 @@ Chess openings app to let you keen in the game.
 - [x] design _(in hands)_ how the design will look like, and about all features
 - [x] choose a UI toolkit and add it
   - think between NativeBase, React Native Elements and RN UI Kitten
+- [ ] remove react-native-elements
 - [ ] add firebase authentication
 - [ ] uncomment the ads block before publishing the app
 

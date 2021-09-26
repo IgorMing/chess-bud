@@ -1,24 +1,22 @@
 // import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
+import * as eva from '@eva-design/eva';
 import {NavigationContainer} from '@react-navigation/native';
+import {ApplicationProvider} from '@ui-kitten/components';
 import type {ReactNode} from 'react';
 import React from 'react';
 import {Appearance, StatusBar} from 'react-native';
-import {ThemeProvider} from 'react-native-elements';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
 import RootNavigator from './navigators/root-navigator';
 
 const App: () => ReactNode = () => {
   const isDarkMode = Appearance.getColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider>
-      <ThemeProvider useDark={isDarkMode}>
-        <NavigationContainer>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          <RootNavigator />
-        </NavigationContainer>
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <ApplicationProvider {...eva} theme={eva.light}>
+      <NavigationContainer>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <RootNavigator />
+      </NavigationContainer>
+    </ApplicationProvider>
   );
 };
 
