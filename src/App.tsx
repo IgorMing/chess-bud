@@ -11,7 +11,7 @@ const App: () => ReactNode = () => {
   const isDarkMode = Appearance.getColorScheme() === 'dark';
 
   return (
-    <ApplicationProvider {...eva} theme={eva.light}>
+    <ApplicationProvider {...eva} theme={isDarkMode ? eva.light : eva.dark}>
       <NavigationContainer>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <RootNavigator />
