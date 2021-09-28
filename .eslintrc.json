@@ -3,7 +3,8 @@
   "extends": "@react-native-community",
   "plugins": ["import"],
   "rules": {
-    "import/no-unresolved": "error"
+    "import/no-unresolved": "error",
+    "react-native/no-inline-styles": "off" // remove this later
   },
   "settings": {
     "import/parsers": {

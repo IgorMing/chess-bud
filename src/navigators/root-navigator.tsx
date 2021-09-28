@@ -1,11 +1,10 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useEffect, useState} from 'react';
-import DetailsScreen from '../screens/Details';
-import HomeScreen from '../screens/Home';
 import SigninScreen from '../screens/Signin';
 import SplashScreen from '../screens/Splash';
-import {RootStackParamList} from './types';
+import {RootStackParamList} from '../types';
+import HomeTab from './home-tab-navigator';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -29,11 +28,10 @@ const RootNavigator: React.FC = () => {
   }
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       {user ? (
         <>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Details" component={DetailsScreen} />
+          <Stack.Screen name="HomeTab" component={HomeTab} />
         </>
       ) : (
         <>

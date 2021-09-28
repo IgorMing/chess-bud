@@ -1,12 +1,12 @@
 import {Layout, Text} from '@ui-kitten/components';
 import React from 'react';
 
-const DetailsScreen: React.VFC = () => {
+const Profile: React.FC = () => {
   return (
     <Layout style={{flex: 1}}>
-      <Text>Details screen</Text>
+      <Text>This is the favorites screen</Text>
     </Layout>
   );
 };
 
-export default DetailsScreen;
+export default Profile;
