@@ -4,8 +4,9 @@ Chess openings app to let you keen in the game.
 
 ## TODO List
 
-- [ ] create an external component to show a list of content
-- [ ] use the list component to render the data fetched from realtime database
+- [x] create an external component to show a list of content
+- [ ] configure firestore and set the initial data there
+- [ ] use the list component to render the data fetched from firestore
 - [ ] add condition to favorites screen toggling between auth/not auth
 
 ---
