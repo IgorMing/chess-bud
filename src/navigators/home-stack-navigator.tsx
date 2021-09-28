@@ -2,7 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import DetailsScreen from '../screens/Details';
 import HomeScreen from '../screens/Home/index';
-import {HomeStackParamList} from '../screens/Home/types';
+import {HomeStackParamList} from './types';
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 

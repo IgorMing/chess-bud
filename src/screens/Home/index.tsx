@@ -1,9 +1,9 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Button, Layout, Text} from '@ui-kitten/components';
 import React from 'react';
-import {RootStackParamList} from '../../types';
+import {HomeStackParamList} from '../../navigators/types';
 
-type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type HomeProps = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 
 const Home: React.VFC<HomeProps> = props => {
   function onPress() {

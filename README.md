@@ -4,11 +4,12 @@ Chess openings app to let you keen in the game.
 
 ## TODO List
 
-- [x] configure admob
-- [x] design _(in hands)_ how the design will look like, and about all features
-- [x] choose a UI toolkit and add it
-  - think between NativeBase, React Native Elements and RN UI Kitten
-- [x] add firebase authentication
+- [ ] create an external component to show a list of content
+- [ ] use the list component to render the data fetched from realtime database
+- [ ] add condition to favorites screen toggling between auth/not auth
+
+---
+
 - [ ] uncomment the ads block before publishing the app
 
 ## Known erros

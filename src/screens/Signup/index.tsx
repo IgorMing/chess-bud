@@ -1,19 +1,14 @@
 import auth from '@react-native-firebase/auth';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Button, Layout, Text} from '@ui-kitten/components';
 import React, {useState} from 'react';
 import {handleError} from '../../configs/helpers';
-import {ProfileStackParamList} from '../../navigators/types';
 
-type SigninProps = NativeStackScreenProps<ProfileStackParamList, 'Signin'>;
-
-const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
+const SignupScreen: React.VFC = () => {
   const [error, setError] = useState<string>('');
-
-  function signIn() {
+  function signUp() {
     setError('');
     auth()
-      .signInWithEmailAndPassword('igor.ming@gmail.com', 'Igor1993')
+      .createUserWithEmailAndPassword('igor.ming@gmail.com', 'Igor1993')
       .then(user => {
         console.log(user);
         console.log('User account created & signed in!');
@@ -22,18 +17,14 @@ const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
         setError(handleError(err.code));
       });
   }
+
   return (
     <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Signin screen</Text>
+      <Text>Signup screen</Text>
       {!!error && <Text status="danger">{error}</Text>}
-      <Button onPress={signIn}>Signin</Button>
-      <Button
-        appearance="outline"
-        onPress={() => navigation.navigate('Signup')}>
-        Create an account
-      </Button>
+      <Button onPress={signUp}>Signup</Button>
     </Layout>
   );
 };
 
-export default SigninScreen;
+export default SignupScreen;

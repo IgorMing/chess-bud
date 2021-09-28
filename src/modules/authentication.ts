@@ -1,5 +1,6 @@
-import React, {useEffect, useMemo} from 'react';
-import {AuthAction, AuthState} from './types';
+import auth from '@react-native-firebase/auth';
+import React, {useEffect, useMemo, useState} from 'react';
+import {AuthAction, AuthContextProps, AuthState, AuthType} from './types';
 
 function reducer(state: AuthState, action: AuthAction): AuthState {
   switch (action.type) {
@@ -7,27 +8,56 @@ function reducer(state: AuthState, action: AuthAction): AuthState {
     case 'SIGN_IN':
       return {
         ...state,
-        token: action.payload,
+        user: action.payload,
+      };
+    case 'INITIALIZING':
+      return {
+        ...state,
+        initializing: action.payload ?? true,
       };
     case 'SIGN_OUT':
       return {
         ...state,
-        token: null,
+        user: null,
       };
   }
 }
 
-export default function useAuthentication() {
+export function useAuthenticationContext() {
   const [state, dispatch] = React.useReducer(reducer, {
-    isSignedIn: null,
-    token: null,
+    user: null,
+    initializing: true,
   });
+  const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
-    // TODO: Check data from firebase auth
-  }, []);
+    const subscriber = auth().onAuthStateChanged(fbUser => {
+      console.log({user: fbUser});
+      dispatch({type: 'SIGN_IN', payload: fbUser});
+      if (initializing) {
+        setInitializing(false);
+      }
+    });
+    return subscriber;
+  }, [initializing]);
 
-  const authContext = useMemo(() => ({
-    signin: () => {},
-  }));
+  const authContext = useMemo(
+    () => ({
+      isLoggedIn: !!state.user,
+      signin: async (user: AuthType) => {
+        dispatch({type: 'SIGN_IN', payload: user});
+      },
+      signout: () => {
+        dispatch({type: 'SIGN_OUT'});
+      },
+    }),
+    [state.user],
+  );
+
+  return {authContext, initializing};
 }
+
+export const AuthContext = React.createContext<AuthContextProps>({
+  signin: () => {},
+  signout: () => {},
+});

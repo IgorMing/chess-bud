@@ -1,44 +1,38 @@
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React, {useEffect, useState} from 'react';
-import SigninScreen from '../screens/Signin';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from 'react';
+import {AuthContext, useAuthenticationContext} from '../modules/authentication';
+import FavoritesScreen from '../screens/Favorites/index';
 import SplashScreen from '../screens/Splash';
-import {RootStackParamList} from '../types';
-import HomeTab from './home-tab-navigator';
+import BottomNavigator from './bottom-navigator';
+import HomeStackNavigator from './home-stack-navigator';
+import ProfileStackNavigator from './profile-stack-navigator';
+import {HomeTabParamList} from './types';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<HomeTabParamList>();
 
 const RootNavigator: React.FC = () => {
-  const [initializing, setInitializing] = useState<boolean>(true);
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
-
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(fbUser => {
-      console.log({user: fbUser});
-      setUser(fbUser);
-      if (initializing) {
-        setInitializing(false);
-      }
-    });
-    return subscriber;
-  }, [initializing]);
+  const {authContext, initializing} = useAuthenticationContext();
 
   if (initializing) {
     return <SplashScreen />;
   }
 
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      {user ? (
-        <>
-          <Stack.Screen name="HomeTab" component={HomeTab} />
-        </>
-      ) : (
-        <>
-          <Stack.Screen name="Signin" component={SigninScreen} />
-        </>
-      )}
-    </Stack.Navigator>
+    <AuthContext.Provider value={authContext}>
+      <Tab.Navigator tabBar={BottomNavigator}>
+        <Tab.Screen
+          name="HomeStack"
+          component={HomeStackNavigator}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen name="Favorites" component={FavoritesScreen} />
+        <Tab.Screen
+          name="ProfileStack"
+          component={ProfileStackNavigator}
+          options={{headerShown: false}}
+        />
+      </Tab.Navigator>
+    </AuthContext.Provider>
   );
 };
 
