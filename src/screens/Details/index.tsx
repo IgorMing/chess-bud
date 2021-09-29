@@ -2,7 +2,6 @@ import {
   Divider,
   Icon,
   Layout,
-  StyleService,
   Text,
   useStyleSheet,
   useTheme,
@@ -11,6 +10,9 @@ import React from 'react';
 import {Dimensions, Image, ScrollView, View} from 'react-native';
 import mockData from '../../configs/chess-openings-app-export.json';
 import {formatMoves, getUsableKeys, isObjKey} from '../../configs/helpers';
+import themedStyles from './styles';
+import Title from './Title';
+import Variants from './Variants';
 
 const opening = mockData.ruy_lopez;
 const BOARD_SIZE = Dimensions.get('screen').width * 0.95;
@@ -18,6 +20,7 @@ const BOARD_SIZE = Dimensions.get('screen').width * 0.95;
 const DetailsScreen: React.VFC = () => {
   const theme = useTheme();
   const styles = useStyleSheet(themedStyles);
+
   const keys = getUsableKeys(opening);
   console.log(keys);
 
@@ -68,9 +71,7 @@ const DetailsScreen: React.VFC = () => {
         </View>
 
         <View style={styles.itemContainer}>
-          <Text category="s1" style={styles.title}>
-            Moves
-          </Text>
+          <Title>Moves</Title>
           <Divider />
           <Text category="p1" style={styles.text}>
             {formatMoves(opening.moves)}
@@ -79,43 +80,16 @@ const DetailsScreen: React.VFC = () => {
 
         {keys.map(key => (
           <View style={styles.itemContainer}>
-            <Text category="s1" style={styles.title}>
-              {key}
-            </Text>
+            <Title>{key}</Title>
             <Divider />
             {renderRow(key)}
           </View>
         ))}
+
+        <Variants />
       </ScrollView>
     </Layout>
   );
 };
-
-const themedStyles = StyleService.create({
-  groupContainer: {
-    flexDirection: 'row',
-  },
-  imageContainer: {
-    paddingBottom: 12,
-    alignSelf: 'center',
-  },
-  itemContainer: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    paddingBottom: 12,
-  },
-  icon: {
-    height: 24,
-    width: 24,
-  },
-  title: {
-    fontSize: 18,
-    paddingBottom: 6,
-  },
-  text: {
-    fontSize: 16,
-    lineHeight: 22,
-  },
-});
 
 export default DetailsScreen;

@@ -6,7 +6,7 @@ Chess openings app to let you keen in the game.
 
 - [x] create an external component to show a list of content
 - [x] apply the UI on details screen w/ mocked data
-- [ ] show variants on an accordion component in the same screen
+- [x] show variants on an accordion component in the same screen
 - [x] configure firestore and set the initial data there
 - [ ] use the list component to render the data fetched from firestore
 - [ ] add condition to favorites screen toggling between auth/not auth

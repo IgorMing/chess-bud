@@ -21,6 +21,7 @@
     "@ui-kitten/eva-icons": "^5.1.1",
     "react": "17.0.2",
     "react-native": "0.65.1",
+    "react-native-collapsible": "^1.6.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.7.2",
     "react-native-svg": "^12.1.1"
