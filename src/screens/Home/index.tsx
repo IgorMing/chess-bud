@@ -2,6 +2,7 @@ import {Card, Divider, Layout, List, Text} from '@ui-kitten/components';
 import React from 'react';
 import {Dimensions, Image, View} from 'react-native';
 import mockData from '../../configs/chess-openings-app-export.json';
+import {formatMoves} from '../../configs/helpers';
 import {HomeProps, OpeningsInfo} from './types';
 
 const BOARD_SIZE = Dimensions.get('screen').width / 2;
@@ -10,11 +11,11 @@ const Home: React.VFC<HomeProps> = ({navigation}) => {
   function renderItem({item}: OpeningsInfo) {
     return (
       <Card
-        onPress={() => navigation.navigate('Details')}
+        onPress={() => navigation.navigate('Details', {title: item.name})}
         status="basic"
         footer={footerProps => (
           <Text {...footerProps} appearance="hint">
-            {item.moves.map((move, index) => ` ${index + 1}.${move}`)}
+            {formatMoves(item.moves)}
           </Text>
         )}
         header={headerProps => (

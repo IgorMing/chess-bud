@@ -6,7 +6,7 @@ export type HomeTabParamList = {
 
 export type HomeStackParamList = {
   Home: undefined;
-  Details: undefined;
+  Details: {title: string};
 };
 
 export type ProfileStackParamList = {
