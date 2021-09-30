@@ -5,18 +5,16 @@ import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import type {ReactNode} from 'react';
 import React from 'react';
-import {Appearance, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import RootNavigator from './navigators/root-navigator';
 
 const App: () => ReactNode = () => {
-  const isDarkMode = Appearance.getColorScheme() === 'dark';
-
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={isDarkMode ? eva.light : eva.dark}>
+      <ApplicationProvider {...eva} theme={eva.dark}>
         <NavigationContainer>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <StatusBar barStyle={'light-content'} />
           <RootNavigator />
         </NavigationContainer>
       </ApplicationProvider>

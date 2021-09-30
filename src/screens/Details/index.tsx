@@ -73,7 +73,7 @@ const DetailsScreen: React.VFC = () => {
         <View style={styles.itemContainer}>
           <Title>Moves</Title>
           <Divider />
-          <Text category="p1" style={styles.text}>
+          <Text category="p1" appearance="hint" style={styles.text}>
             {formatMoves(opening.moves)}
           </Text>
         </View>

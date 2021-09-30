@@ -3,14 +3,13 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   groupContainer: {
     flexDirection: 'row',
+    paddingRight: 32,
   },
   imageContainer: {
     paddingBottom: 12,
     alignSelf: 'center',
   },
   itemContainer: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
     paddingBottom: 12,
   },
   icon: {

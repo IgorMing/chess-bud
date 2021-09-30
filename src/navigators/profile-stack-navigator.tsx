@@ -1,5 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useTheme} from '@ui-kitten/components';
 import React, {useContext} from 'react';
+import useHeaderOptions from '../configs/headerOptions';
 import {AuthContext} from '../modules/authentication';
 import ProfileScreen from '../screens/Profile/index';
 import SigninScreen from '../screens/Signin';
@@ -9,10 +11,12 @@ import {ProfileStackParamList} from './types';
 const Stack = createNativeStackNavigator<ProfileStackParamList>();
 
 const ProfileStackNavigator: React.FC = () => {
+  const theme = useTheme();
+  const headerOptions = useHeaderOptions(theme);
   const authContext = useContext(AuthContext);
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={headerOptions}>
       {authContext.isLoggedIn ? (
         <Stack.Screen name="Profile" component={ProfileScreen} />
       ) : (

@@ -11,8 +11,8 @@ const Home: React.VFC<HomeProps> = ({navigation}) => {
   function renderItem({item}: OpeningsInfo) {
     return (
       <Card
+        style={{marginBottom: 8}}
         onPress={() => navigation.navigate('Details', {title: item.name})}
-        status="basic"
         footer={footerProps => (
           <Text {...footerProps} appearance="hint">
             {formatMoves(item.moves)}
