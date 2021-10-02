@@ -1,13 +1,37 @@
+import firestore, {
+  FirebaseFirestoreTypes,
+} from '@react-native-firebase/firestore';
 import {Card, Divider, Layout, List, Text} from '@ui-kitten/components';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Dimensions, Image, View} from 'react-native';
-import mockData from '../../configs/chess-openings-app-export.json';
 import {formatMoves} from '../../configs/helpers';
 import {HomeProps, OpeningsInfo} from './types';
 
 const BOARD_SIZE = Dimensions.get('screen').width / 2;
 
 const Home: React.VFC<HomeProps> = ({navigation}) => {
+  const [openings, setOpenings] = useState<any[]>([]);
+
+  useEffect(() => {
+    const subscriber = firestore()
+      .collection('openings')
+      .onSnapshot(snapshot => {
+        const _openings: FirebaseFirestoreTypes.DocumentData[] = [];
+        snapshot.forEach(document => {
+          _openings.push({
+            ...document.data(),
+            key: document.id,
+          });
+        });
+
+        setOpenings(_openings);
+      });
+
+    return () => subscriber();
+  }, []);
+
+  console.log(openings);
+
   function renderItem({item}: OpeningsInfo) {
     return (
       <Card
@@ -45,7 +69,7 @@ const Home: React.VFC<HomeProps> = ({navigation}) => {
   return (
     <Layout style={{flex: 1}}>
       <List
-        data={Object.values(mockData)}
+        data={openings}
         renderItem={renderItem}
         ItemSeparatorComponent={Divider}
       />
