@@ -12,7 +12,8 @@ Chess openings app to let you keen in the game.
 - [x] use the list component to render the data fetched from firestore
 - [x] configure firebase storage
 - [x] store images on firebase storage
-- [x] add condition to use the `.imagePath` or the image on storage from the field `.storageName`
+- [x] add condition to use the cloud storage image name or a direct uri link
+- [x] fetch variants data from a nested firestore collection
 - [ ] configure i18n library
 - [ ] replace all hardcoded strings through the project with dynamic i18ned values
 - [ ] fetch `variants` data from firestore

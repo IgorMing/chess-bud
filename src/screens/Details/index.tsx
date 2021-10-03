@@ -43,20 +43,24 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
           setOpening(data);
           setFieldKeys(getUsableKeys(data));
         }
-      })
-      .catch();
+      });
   }, [route.params.uid]);
 
   useEffect(() => {
-    const {imagePath, storageImageName} = opening ?? {};
+    const {imageAccessWay, imageReference} = opening ?? {};
 
-    if (storageImageName) {
-      const reference = storage().ref(storageImageName);
-      reference.getDownloadURL().then(setBoardPath);
-      return;
+    switch (imageAccessWay) {
+      case 'cloud-storage':
+        const reference = storage().ref(imageReference);
+        reference.getDownloadURL().then(setBoardPath);
+        break;
+      case 'url':
+        imageReference && setBoardPath(imageReference);
+        break;
+      case 'none':
+      default:
+        return;
     }
-
-    imagePath && setBoardPath(imagePath);
   }, [opening]);
 
   function renderRow(key: string, _opening: OpeningProps) {
@@ -68,7 +72,7 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
 
     if (Array.isArray(value)) {
       return value.map(each => (
-        <View key={key} style={styles.groupContainer}>
+        <View key={each} style={styles.groupContainer}>
           <Icon
             style={styles.icon}
             fill={theme['color-primary-default']}
@@ -127,7 +131,7 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
               </View>
             ))}
 
-            <Variants />
+            <Variants openingUid={route.params.uid} />
           </>
         )}
       </ScrollView>

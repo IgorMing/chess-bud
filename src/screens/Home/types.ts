@@ -10,8 +10,8 @@ export type OpeningProps = {
   pros: string[];
   cons: string[];
   starting_position?: string;
-  imagePath?: string; // path got directly from chess.com reference
-  storageImageName?: string;
+  imageReference?: string;
+  imageAccessWay: 'none' | 'cloud-storage' | 'url';
 };
 
 export type OpeningsInfo = {
