@@ -9,7 +9,13 @@ Chess openings app to let you keen in the game.
 - [x] show variants on an accordion component in the same screen
 - [x] modify header UI
 - [x] configure firestore and set the initial data there
-- [ ] use the list component to render the data fetched from firestore
+- [x] use the list component to render the data fetched from firestore
+- [ ] configure firebase storage
+- [ ] store images on firebase storage
+- [ ] add condition to use the `.imagePath` or the image on storage from the field `.storageUri`
+
+- [ ] configure i18n library
+- [ ] change texts from the project to start using the string dictionary, instead
 - [ ] add condition to favorites screen toggling between auth/not auth
 - [ ] add input fields for signin/signup
 - [ ] check how to store this data on firestore

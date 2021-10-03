@@ -1,3 +1,6 @@
+import firestore, {
+  FirebaseFirestoreTypes,
+} from '@react-native-firebase/firestore';
 import {
   Divider,
   Icon,
@@ -6,34 +9,56 @@ import {
   useStyleSheet,
   useTheme,
 } from '@ui-kitten/components';
-import React from 'react';
-import {Dimensions, Image, ScrollView, View} from 'react-native';
-import mockData from '../../configs/chess-openings-app-export.json';
+import React, {useEffect, useState} from 'react';
+import {
+  ActivityIndicator,
+  Dimensions,
+  Image,
+  ScrollView,
+  View,
+} from 'react-native';
 import {formatMoves, getUsableKeys, isObjKey} from '../../configs/helpers';
+import {OpeningProps} from '../Home/types';
 import themedStyles from './styles';
 import Title from './Title';
+import {DetailsProps} from './types';
 import Variants from './Variants';
 
-const opening = mockData.ruy_lopez;
+// const opening = mockData.ruy_lopez;
 const BOARD_SIZE = Dimensions.get('screen').width * 0.95;
 
-const DetailsScreen: React.VFC = () => {
+const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
+  const [opening, setOpening] =
+    useState<FirebaseFirestoreTypes.DocumentData | null>(null);
+  const [fieldKeys, setFieldKeys] = useState<string[]>([]);
   const theme = useTheme();
   const styles = useStyleSheet(themedStyles);
 
-  const keys = getUsableKeys(opening);
-  console.log(keys);
+  useEffect(() => {
+    firestore()
+      .collection('openings')
+      .doc(route.params.uid)
+      .get()
+      .then(result => {
+        const data = result.data() as OpeningProps;
+        if (data) {
+          setOpening(data);
+          setFieldKeys(getUsableKeys(data));
+        }
+      })
+      .catch();
+  }, [route.params.uid]);
 
-  function renderRow(key: string) {
-    if (!isObjKey(key, opening)) {
+  function renderRow(key: string, _opening: OpeningProps) {
+    if (!isObjKey(key, _opening)) {
       return null;
     }
 
-    const value = opening[key];
+    const value = _opening[key];
 
     if (Array.isArray(value)) {
       return value.map(each => (
-        <View style={styles.groupContainer}>
+        <View key={key} style={styles.groupContainer}>
           <Icon
             style={styles.icon}
             fill={theme['color-primary-default']}
@@ -48,7 +73,7 @@ const DetailsScreen: React.VFC = () => {
 
     return (
       <Text category="p1" style={styles.text}>
-        {opening[key]}
+        {value}
       </Text>
     );
   }
@@ -61,32 +86,40 @@ const DetailsScreen: React.VFC = () => {
         padding: 12,
       }}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.imageContainer}>
-          <Image
-            style={{width: BOARD_SIZE, height: BOARD_SIZE}}
-            source={{
-              uri: opening.imagePath,
-            }}
-          />
-        </View>
+        {!opening ? (
+          <ActivityIndicator />
+        ) : (
+          <>
+            {opening.imagePath && (
+              <View style={styles.imageContainer}>
+                <Image
+                  style={{width: BOARD_SIZE, height: BOARD_SIZE}}
+                  source={{
+                    uri: opening.imagePath,
+                  }}
+                />
+              </View>
+            )}
 
-        <View style={styles.itemContainer}>
-          <Title>Moves</Title>
-          <Divider />
-          <Text category="p1" appearance="hint" style={styles.text}>
-            {formatMoves(opening.moves)}
-          </Text>
-        </View>
+            <View style={styles.itemContainer}>
+              <Title>Moves</Title>
+              <Divider />
+              <Text category="p1" appearance="hint" style={styles.text}>
+                {formatMoves(opening.moves)}
+              </Text>
+            </View>
 
-        {keys.map(key => (
-          <View style={styles.itemContainer}>
-            <Title>{key}</Title>
-            <Divider />
-            {renderRow(key)}
-          </View>
-        ))}
+            {fieldKeys.map(key => (
+              <View key={key} style={styles.itemContainer}>
+                <Title>{key}</Title>
+                <Divider />
+                {renderRow(key, opening)}
+              </View>
+            ))}
 
-        <Variants />
+            <Variants />
+          </>
+        )}
       </ScrollView>
     </Layout>
   );

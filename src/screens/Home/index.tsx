@@ -5,12 +5,14 @@ import {Card, Divider, Layout, List, Text} from '@ui-kitten/components';
 import React, {useEffect, useState} from 'react';
 import {Dimensions, Image, View} from 'react-native';
 import {formatMoves} from '../../configs/helpers';
-import {HomeProps, OpeningsInfo} from './types';
+import {HomeProps} from './types';
 
 const BOARD_SIZE = Dimensions.get('screen').width / 2;
 
 const Home: React.VFC<HomeProps> = ({navigation}) => {
-  const [openings, setOpenings] = useState<any[]>([]);
+  const [openings, setOpenings] = useState<
+    FirebaseFirestoreTypes.DocumentData[]
+  >([]);
 
   useEffect(() => {
     const subscriber = firestore()
@@ -30,13 +32,13 @@ const Home: React.VFC<HomeProps> = ({navigation}) => {
     return () => subscriber();
   }, []);
 
-  console.log(openings);
-
-  function renderItem({item}: OpeningsInfo) {
+  function renderItem({item}: {item: FirebaseFirestoreTypes.DocumentData}) {
     return (
       <Card
         style={{marginBottom: 8}}
-        onPress={() => navigation.navigate('Details', {title: item.name})}
+        onPress={() => {
+          navigation.navigate('Details', {title: item.name, uid: item.key});
+        }}
         footer={footerProps => (
           <Text {...footerProps} appearance="hint">
             {formatMoves(item.moves)}
@@ -71,6 +73,7 @@ const Home: React.VFC<HomeProps> = ({navigation}) => {
       <List
         data={openings}
         renderItem={renderItem}
+        keyExtractor={item => item.key}
         ItemSeparatorComponent={Divider}
       />
     </Layout>

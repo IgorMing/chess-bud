@@ -23,9 +23,9 @@ export function formatMoves(moves: string[]) {
 }
 
 export function getUsableKeys(object: OpeningProps) {
-  const hidden_keys = ['name', 'moves', 'imagePath'];
+  const shown_keys = ['pros', 'cons', 'details'];
   const keys = Object.keys(object);
-  return keys.filter(key => !hidden_keys.includes(key));
+  return keys.filter(key => shown_keys.includes(key));
 }
 
 export function isObjKey<T>(key: any, obj: T): key is keyof T {
