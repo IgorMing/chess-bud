@@ -1,6 +1,5 @@
-import firestore, {
-  FirebaseFirestoreTypes,
-} from '@react-native-firebase/firestore';
+import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 import {
   Divider,
   Icon,
@@ -24,12 +23,11 @@ import Title from './Title';
 import {DetailsProps} from './types';
 import Variants from './Variants';
 
-// const opening = mockData.ruy_lopez;
 const BOARD_SIZE = Dimensions.get('screen').width * 0.95;
 
 const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
-  const [opening, setOpening] =
-    useState<FirebaseFirestoreTypes.DocumentData | null>(null);
+  const [opening, setOpening] = useState<OpeningProps | null>(null);
+  const [boardPath, setBoardPath] = useState<string | null>(null);
   const [fieldKeys, setFieldKeys] = useState<string[]>([]);
   const theme = useTheme();
   const styles = useStyleSheet(themedStyles);
@@ -48,6 +46,18 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
       })
       .catch();
   }, [route.params.uid]);
+
+  useEffect(() => {
+    const {imagePath, storageImageName} = opening ?? {};
+
+    if (storageImageName) {
+      const reference = storage().ref(storageImageName);
+      reference.getDownloadURL().then(setBoardPath);
+      return;
+    }
+
+    imagePath && setBoardPath(imagePath);
+  }, [opening]);
 
   function renderRow(key: string, _opening: OpeningProps) {
     if (!isObjKey(key, _opening)) {
@@ -90,12 +100,12 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
           <ActivityIndicator />
         ) : (
           <>
-            {opening.imagePath && (
+            {boardPath && (
               <View style={styles.imageContainer}>
                 <Image
                   style={{width: BOARD_SIZE, height: BOARD_SIZE}}
                   source={{
-                    uri: opening.imagePath,
+                    uri: boardPath,
                   }}
                 />
               </View>

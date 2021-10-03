@@ -32,7 +32,6 @@ export function useAuthenticationContext() {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(fbUser => {
-      console.log({user: fbUser});
       dispatch({type: 'SIGN_IN', payload: fbUser});
       if (initializing) {
         setInitializing(false);

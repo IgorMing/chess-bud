@@ -9,8 +9,7 @@ const SignupScreen: React.VFC = () => {
     setError('');
     auth()
       .createUserWithEmailAndPassword('igor.ming@gmail.com', 'Igor1993')
-      .then(user => {
-        console.log(user);
+      .then(() => {
         console.log('User account created & signed in!');
       })
       .catch(err => {

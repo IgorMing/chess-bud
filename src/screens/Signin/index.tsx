@@ -14,8 +14,7 @@ const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
     setError('');
     auth()
       .signInWithEmailAndPassword('igor.ming@gmail.com', 'Igor1993')
-      .then(user => {
-        console.log(user);
+      .then(() => {
         console.log('User account created & signed in!');
       })
       .catch(err => {

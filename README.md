@@ -10,14 +10,15 @@ Chess openings app to let you keen in the game.
 - [x] modify header UI
 - [x] configure firestore and set the initial data there
 - [x] use the list component to render the data fetched from firestore
-- [ ] configure firebase storage
-- [ ] store images on firebase storage
-- [ ] add condition to use the `.imagePath` or the image on storage from the field `.storageUri`
+- [x] configure firebase storage
+- [x] store images on firebase storage
+- [x] add condition to use the `.imagePath` or the image on storage from the field `.storageName`
+- [ ] configure i18n library
+- [ ] replace all hardcoded strings through the project with dynamic i18ned values
+- [ ] fetch `variants` data from firestore
 
 ---
 
-- [ ] configure i18n library
-- [ ] replace all hardcoded strings through the project with dynamic i18ned values
 - [ ] add condition to favorites screen toggling between auth/not auth
 - [ ] add input fields for signin/signup
 - [ ] check how to store this data on firestore

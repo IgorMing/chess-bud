@@ -11,6 +11,7 @@ export type OpeningProps = {
   cons: string[];
   starting_position?: string;
   imagePath?: string; // path got directly from chess.com reference
+  storageImageName?: string;
 };
 
 export type OpeningsInfo = {
