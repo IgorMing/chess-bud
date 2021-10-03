@@ -14,17 +14,14 @@ Chess openings app to let you keen in the game.
 - [ ] store images on firebase storage
 - [ ] add condition to use the `.imagePath` or the image on storage from the field `.storageUri`
 
-- [ ] configure i18n library
-- [ ] change texts from the project to start using the string dictionary, instead
-- [ ] add condition to favorites screen toggling between auth/not auth
-- [ ] add input fields for signin/signup
-- [ ] check how to store this data on firestore
-- [ ] create the profile screen with data about the user _(lichess, chess.com users)_
-
 ---
 
 - [ ] configure i18n library
 - [ ] replace all hardcoded strings through the project with dynamic i18ned values
+- [ ] add condition to favorites screen toggling between auth/not auth
+- [ ] add input fields for signin/signup
+- [ ] check how to store this data on firestore
+- [ ] create the profile screen with data about the user _(lichess, chess.com users)_
 - [ ] uncomment the ads block before publishing the app
 
 ## Known erros
