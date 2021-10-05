@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react",
@@ -9,6 +10,9 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": true,
+    "paths": {
+      "i18n/*": ["src/i18n/*"]
+    },
     "strict": true,
     "target": "esnext",
     "types": ["react", "jest"]

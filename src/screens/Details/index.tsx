@@ -1,5 +1,4 @@
 import firestore from '@react-native-firebase/firestore';
-import I18n from '../../i18n/i18n';
 import storage from '@react-native-firebase/storage';
 import {
   Divider,
@@ -9,6 +8,7 @@ import {
   useStyleSheet,
   useTheme,
 } from '@ui-kitten/components';
+import I18n from 'i18n/i18n';
 import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
