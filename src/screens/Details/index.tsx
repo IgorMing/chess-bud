@@ -117,7 +117,7 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
             )}
 
             <View style={styles.itemContainer}>
-              <Title>{I18n.t('moves')}</Title>
+              <Title>{I18n.t('details.moves')}</Title>
               <Divider />
               <Text category="p1" appearance="hint" style={styles.text}>
                 {formatMoves(opening.moves)}
@@ -126,7 +126,7 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
 
             {fieldKeys.map(key => (
               <View key={key} style={styles.itemContainer}>
-                <Title>{key}</Title>
+                <Title>{I18n.t(`details.${key}`)}</Title>
                 <Divider />
                 {renderRow(key, opening)}
               </View>

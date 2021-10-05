@@ -2,6 +2,7 @@ import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
 import {Divider, Icon, Layout, Text, useTheme} from '@ui-kitten/components';
+import I18n from 'i18n/i18n';
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
@@ -38,7 +39,7 @@ const Variants: React.VFC<VariantsProps> = ({openingUid}) => {
 
   return (
     <View>
-      <Title>Variants</Title>
+      <Title>{I18n.t('details.variants')}</Title>
       <Divider />
 
       <Accordion

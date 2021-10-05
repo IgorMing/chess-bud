@@ -1,3 +1,9 @@
 export default {
-  moves: 'Moves',
+  details: {
+    moves: 'Moves',
+    cons: 'Cons',
+    pros: 'Pros',
+    details: 'Details',
+    variants: 'Variants',
+  },
 };
