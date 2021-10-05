@@ -14,17 +14,22 @@ Chess openings app to let you keen in the game.
 - [x] store images on firebase storage
 - [x] add condition to use the cloud storage image name or a direct uri link
 - [x] fetch variants data from a nested firestore collection
-- [ ] configure i18n library
-- [ ] replace all hardcoded strings through the project with dynamic i18ned values
-- [ ] fetch `variants` data from firestore
+- [x] configure i18n library
+- [x] replace all hardcoded strings through the project with dynamic i18ned values
+- [x] fetch `variants` data from firestore
+- [ ] add condition to favorites screen toggling between auth/not auth
+- [ ] create bookmark icon to details screen
+- [ ] store bookmark data on firestore _(hint: create a new collection called `users`, having documents by `user.uid` as key, with the fields: bookmarks, lichessUser and chessdotcomUser for this moment.)_
 
 ---
 
-- [ ] add condition to favorites screen toggling between auth/not auth
 - [ ] add input fields for signin/signup
-- [ ] check how to store this data on firestore
 - [ ] create the profile screen with data about the user _(lichess, chess.com users)_
 - [ ] uncomment the ads block before publishing the app
+- [ ] create a screen which provides a way to add new openings to the app _(initially we can hardcode our own user for have access to the screen)_
+- [ ] configure remote config
+- [ ] fetch allowed users for add and edit openings and variants
+- [ ] import string dictionary from realtime database
 
 ## Known erros
 
