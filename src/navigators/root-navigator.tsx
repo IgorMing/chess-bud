@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useTheme} from '@ui-kitten/components';
 import React from 'react';
-import useHeaderOptions from '../configs/headerOptions';
+import {useTabOptions} from '../configs/headerOptions';
 import {AuthContext, useAuthenticationContext} from '../modules/authentication';
 import FavoritesScreen from '../screens/Favorites/index';
 import SplashScreen from '../screens/Splash';
@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator<HomeTabParamList>();
 
 const RootNavigator: React.FC = () => {
   const theme = useTheme();
-  const headerOptions = useHeaderOptions(theme);
+  const TabOptions = useTabOptions(theme);
   const {authContext, initializing} = useAuthenticationContext();
 
   if (initializing) {
@@ -23,7 +23,7 @@ const RootNavigator: React.FC = () => {
 
   return (
     <AuthContext.Provider value={authContext}>
-      <Tab.Navigator tabBar={BottomNavigator} screenOptions={headerOptions}>
+      <Tab.Navigator tabBar={BottomNavigator} screenOptions={TabOptions}>
         <Tab.Screen
           name="HomeStack"
           component={HomeStackNavigator}
