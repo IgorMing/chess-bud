@@ -1,4 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
+import I18n from '../../i18n/i18n';
 import storage from '@react-native-firebase/storage';
 import {
   Divider,
@@ -116,7 +117,7 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
             )}
 
             <View style={styles.itemContainer}>
-              <Title>Moves</Title>
+              <Title>{I18n.t('moves')}</Title>
               <Divider />
               <Text category="p1" appearance="hint" style={styles.text}>
                 {formatMoves(opening.moves)}

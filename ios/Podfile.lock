@@ -715,11 +715,11 @@ PODS:
   - RNFBApp (11.5.0):
     - Firebase/CoreOnly (= 7.11.0)
     - React-Core
-  - RNFBAuth (12.8.0):
+  - RNFBAuth (11.5.0):
     - Firebase/Auth (= 7.11.0)
     - React-Core
     - RNFBApp
-  - RNFBFirestore (12.8.0):
+  - RNFBFirestore (11.5.0):
     - Firebase/Firestore (= 7.11.0)
     - React-Core
     - RNFBApp
@@ -727,6 +727,8 @@ PODS:
     - Firebase/Storage (= 7.11.0)
     - React-Core
     - RNFBApp
+  - RNI18n (2.0.15):
+    - React
   - RNScreens (3.7.2):
     - React-Core
     - React-RCTImage
@@ -794,6 +796,7 @@ DEPENDENCIES:
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
   - "RNFBStorage (from `../node_modules/@react-native-firebase/storage`)"
+  - RNI18n (from `../node_modules/react-native-i18n`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -905,6 +908,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/firestore"
   RNFBStorage:
     :path: "../node_modules/@react-native-firebase/storage"
+  RNI18n:
+    :path: "../node_modules/react-native-i18n"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSVG:
@@ -979,9 +984,10 @@ SPEC CHECKSUMS:
   ReactCommon: eafed38eec7b591c31751bfa7494801618460459
   RNFBAdMob: a2b5f148468b16d02543707d4627bc9a19016bf3
   RNFBApp: 9c90f9d576861947ba75fe0830567c570bcbcf6d
-  RNFBAuth: 5917c1b45c1916194691aca4c621d0fe298a4a47
-  RNFBFirestore: ce6deca5c2d468383ccc7879b5847b9cc19233ef
+  RNFBAuth: 99fdbce04ff3d39e57a7a3956d632ee69145685b
+  RNFBFirestore: bedb9727c0df9a1f1ec23b5e23988075a4cbea78
   RNFBStorage: 052a32c5af38b106e4d6b0a296df304d97be995e
+  RNI18n: e2f7e76389fcc6e84f2c8733ea89b92502351fd8
   RNScreens: 0591543e343c7444ea1756b6265d81a4295922c9
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   Yoga: aa0cb45287ebe1004c02a13f279c55a95f1572f4
