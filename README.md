@@ -2,6 +2,12 @@
 
 Chess openings app to let you keen in the game.
 
+## How the things are looking?
+
+![List screen](./assets/list.png 'List screen')
+![Details screen](./assets/details1.png 'Details screen')
+![Details screen](./assets/details2.png 'Details screen')
+
 ## TODO List
 
 - [x] create an external component to show a list of content
@@ -26,7 +32,7 @@ Chess openings app to let you keen in the game.
 - [ ] add input fields for signin/signup
 - [ ] create the profile screen with data about the user _(lichess, chess.com users)_
 - [ ] uncomment the ads block before publishing the app
-- [ ] create a screen which provides a way to add new openings to the app _(initially we can hardcode our own user for have access to the screen)_
+- [ ] create a screen which provides a way to add new openings to the app _(initially we can hardcode our own user for have access to the screen. Re-check if worth to do this)_
 - [ ] configure remote config
 - [ ] fetch allowed users for add and edit openings and variants
 - [ ] import string dictionary from realtime database
