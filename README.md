@@ -4,9 +4,9 @@ Chess openings app to let you keen in the game.
 
 ## How the things are looking?
 
-![List screen](./assets/list.png 'List screen')
-![Details screen](./assets/details1.png 'Details screen')
-![Details screen](./assets/details2.png 'Details screen')
+|                                                 |                                                           |                                                           |
+| :---------------------------------------------: | :-------------------------------------------------------: | --------------------------------------------------------- |
+| ![List screen](./assets/list.png 'List screen') | ![Details screen](./assets/details1.png 'Details screen') | ![Details screen](./assets/details2.png 'Details screen') |
 
 ## TODO List
 
