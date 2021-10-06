@@ -1,9 +1,10 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useTheme} from '@ui-kitten/components';
 import React from 'react';
+import {useOpeningsContext, OpeningsContext} from 'src/modules/openings';
 import {useTabOptions} from '../configs/headerOptions';
 import {AuthContext, useAuthenticationContext} from '../modules/authentication';
-import FavoritesScreen from '../screens/Favorites/index';
+import FavoritesStack from './favorites-stack-navigator';
 import SplashScreen from '../screens/Splash';
 import BottomNavigator from './bottom-navigator';
 import HomeStackNavigator from './home-stack-navigator';
@@ -15,27 +16,22 @@ const Tab = createBottomTabNavigator<HomeTabParamList>();
 const RootNavigator: React.FC = () => {
   const theme = useTheme();
   const TabOptions = useTabOptions(theme);
-  const {authContext, initializing} = useAuthenticationContext();
+  const {authContextValue, initializing} = useAuthenticationContext();
+  const {openingsContextValue} = useOpeningsContext();
 
   if (initializing) {
     return <SplashScreen />;
   }
 
   return (
-    <AuthContext.Provider value={authContext}>
-      <Tab.Navigator tabBar={BottomNavigator} screenOptions={TabOptions}>
-        <Tab.Screen
-          name="HomeStack"
-          component={HomeStackNavigator}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen name="Favorites" component={FavoritesScreen} />
-        <Tab.Screen
-          name="ProfileStack"
-          component={ProfileStackNavigator}
-          options={{headerShown: false}}
-        />
-      </Tab.Navigator>
+    <AuthContext.Provider value={authContextValue}>
+      <OpeningsContext.Provider value={openingsContextValue}>
+        <Tab.Navigator tabBar={BottomNavigator} screenOptions={TabOptions}>
+          <Tab.Screen name="HomeStack" component={HomeStackNavigator} />
+          <Tab.Screen name="FavoritesStack" component={FavoritesStack} />
+          <Tab.Screen name="ProfileStack" component={ProfileStackNavigator} />
+        </Tab.Navigator>
+      </OpeningsContext.Provider>
     </AuthContext.Provider>
   );
 };

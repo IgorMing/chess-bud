@@ -1,4 +1,6 @@
-import {OpeningProps} from '../screens/Home/types';
+import storage from '@react-native-firebase/storage';
+import {useEffect, useState} from 'react';
+import {ImageAccessWayType, OpeningProps} from '../screens/Home/types';
 
 export function handleError(error: string): string {
   switch (error) {
@@ -31,3 +33,31 @@ export function getUsableKeys(object: OpeningProps) {
 export function isObjKey<T>(key: any, obj: T): key is keyof T {
   return key in obj;
 }
+
+export const useImagePath = (
+  imageReference?: string,
+  imageAccessWay?: ImageAccessWayType,
+) => {
+  const [boardPath, setBoardPath] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!imageReference || !imageAccessWay) {
+      return;
+    }
+
+    switch (imageAccessWay) {
+      case 'cloud-storage':
+        const reference = storage().ref(imageReference);
+        reference.getDownloadURL().then(setBoardPath);
+        break;
+      case 'url':
+        imageReference && setBoardPath(imageReference);
+        break;
+      case 'none':
+      default:
+        return;
+    }
+  }, [imageReference, imageAccessWay]);
+
+  return boardPath;
+};

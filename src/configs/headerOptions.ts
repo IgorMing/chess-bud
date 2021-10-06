@@ -20,5 +20,6 @@ export function useTabOptions(theme: ThemeType): BottomTabNavigationOptions {
     headerStyle: {
       backgroundColor: theme['color-basic-1000'],
     },
+    headerShown: false,
   };
 }

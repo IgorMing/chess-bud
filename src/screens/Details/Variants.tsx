@@ -41,7 +41,6 @@ const Variants: React.VFC<VariantsProps> = ({openingUid}) => {
     <View>
       <Title>{I18n.t('details.variants')}</Title>
       <Divider />
-
       <Accordion
         expandMultiple
         activeSections={activeActions}

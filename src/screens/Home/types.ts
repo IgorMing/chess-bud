@@ -3,7 +3,10 @@ import {HomeStackParamList} from '../../navigators/types';
 
 export type HomeProps = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 
+export type ImageAccessWayType = 'none' | 'cloud-storage' | 'url';
+
 export type OpeningProps = {
+  key: string;
   name: string;
   moves: string[];
   details: string;
@@ -11,7 +14,7 @@ export type OpeningProps = {
   cons: string[];
   starting_position?: string;
   imageReference?: string;
-  imageAccessWay: 'none' | 'cloud-storage' | 'url';
+  imageAccessWay: ImageAccessWayType;
 };
 
 export type OpeningsInfo = {

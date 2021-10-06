@@ -1,12 +1,25 @@
-import {Layout, Text} from '@ui-kitten/components';
-import React from 'react';
+import React, {useContext} from 'react';
+import {AuthContext} from 'src/modules/authentication';
+import FavoritesLoggedIn from './FavoritesLoggedIn';
+import FavoritesNotLogged from './FavoritesNotLogged';
+import {FavoritesProps} from './types';
 
-const Profile: React.FC = () => {
-  return (
-    <Layout style={{flex: 1}}>
-      <Text>This is the favorites screen</Text>
-    </Layout>
+const Favorites: React.FC<FavoritesProps> = ({navigation}) => {
+  const authContext = useContext(AuthContext);
+
+  return authContext.isLoggedIn ? (
+    <FavoritesLoggedIn
+      onPress={item => {
+        navigation.navigate('Details', {title: item.name, uid: item.key});
+      }}
+    />
+  ) : (
+    <FavoritesNotLogged
+      onPress={() => {
+        navigation.navigate('ProfileStack');
+      }}
+    />
   );
 };
 
-export default Profile;
+export default Favorites;

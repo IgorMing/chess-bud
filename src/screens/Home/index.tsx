@@ -1,77 +1,29 @@
-import firestore, {
-  FirebaseFirestoreTypes,
-} from '@react-native-firebase/firestore';
-import {Card, Divider, Layout, List, Text} from '@ui-kitten/components';
-import React, {useEffect, useState} from 'react';
-import {Dimensions, Image, View} from 'react-native';
-import {formatMoves} from '../../configs/helpers';
-import {HomeProps} from './types';
-
-const BOARD_SIZE = Dimensions.get('screen').width / 2;
+import {Divider, Layout, List} from '@ui-kitten/components';
+import React, {useContext} from 'react';
+import ListCard from 'src/components/Card';
+import {OpeningsContext} from 'src/modules/openings';
+import {HomeProps, OpeningProps} from './types';
 
 const Home: React.VFC<HomeProps> = ({navigation}) => {
-  const [openings, setOpenings] = useState<
-    FirebaseFirestoreTypes.DocumentData[]
-  >([]);
+  const openingsContext = useContext(OpeningsContext);
 
-  useEffect(() => {
-    const subscriber = firestore()
-      .collection('openings')
-      .onSnapshot(snapshot => {
-        const _openings: FirebaseFirestoreTypes.DocumentData[] = [];
-        snapshot.forEach(document => {
-          _openings.push({
-            ...document.data(),
-            key: document.id,
-          });
-        });
-
-        setOpenings(_openings);
-      });
-
-    return () => subscriber();
-  }, []);
-
-  function renderItem({item}: {item: FirebaseFirestoreTypes.DocumentData}) {
+  function renderItem({item}: {item: OpeningProps}) {
     return (
-      <Card
-        style={{marginBottom: 8}}
+      <ListCard
+        details={item.details}
+        moves={item.moves}
         onPress={() => {
           navigation.navigate('Details', {title: item.name, uid: item.key});
         }}
-        footer={footerProps => (
-          <Text {...footerProps} appearance="hint">
-            {formatMoves(item.moves)}
-          </Text>
-        )}
-        header={headerProps => (
-          <View {...headerProps}>
-            <Text category="h5">{item.name}</Text>
-          </View>
-        )}>
-        <>
-          <Text numberOfLines={3} style={{textAlign: 'justify'}}>
-            {item.details}
-          </Text>
-          {item.imagePath && (
-            <View style={{alignItems: 'center', paddingVertical: 20}}>
-              <Image
-                style={{width: BOARD_SIZE, height: BOARD_SIZE}}
-                source={{
-                  uri: item.imagePath,
-                }}
-              />
-            </View>
-          )}
-        </>
-      </Card>
+        title={item.name}
+      />
     );
   }
 
   return (
     <Layout style={{flex: 1}}>
       <List
-        data={openings}
+        data={openingsContext.data}
         renderItem={renderItem}
         keyExtractor={item => item.key}
         ItemSeparatorComponent={Divider}

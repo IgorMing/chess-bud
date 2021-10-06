@@ -1,6 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  container: {
+    paddingVertical: 12,
+  },
   groupContainer: {
     flexDirection: 'row',
     paddingRight: 32,
@@ -29,9 +32,11 @@ export default StyleSheet.create({
     paddingHorizontal: 12,
   },
   variantContainer: {
-    paddingVertical: 8,
+    paddingTop: 8,
+    paddingBottom: 16,
   },
   moves: {
+    paddingTop: 8,
     paddingBottom: 12,
   },
 });

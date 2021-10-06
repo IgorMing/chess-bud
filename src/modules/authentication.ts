@@ -40,20 +40,23 @@ export function useAuthenticationContext() {
     return subscriber;
   }, [initializing]);
 
-  const authContext = useMemo(
+  const authContextValue = useMemo(
     () => ({
       isLoggedIn: !!state.user,
       signin: async (user: AuthType) => {
         dispatch({type: 'SIGN_IN', payload: user});
       },
       signout: () => {
+        auth()
+          .signOut()
+          .then(() => console.log('User signed out!'));
         dispatch({type: 'SIGN_OUT'});
       },
     }),
     [state.user],
   );
 
-  return {authContext, initializing};
+  return {authContextValue, initializing};
 }
 
 export const AuthContext = React.createContext<AuthContextProps>({

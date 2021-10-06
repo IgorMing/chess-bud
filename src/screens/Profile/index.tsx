@@ -1,18 +1,14 @@
-import auth from '@react-native-firebase/auth';
 import {Button, Layout, Text} from '@ui-kitten/components';
-import React from 'react';
+import React, {useContext} from 'react';
+import {AuthContext} from 'src/modules/authentication';
 
 const Profile: React.FC = () => {
-  function signout() {
-    auth()
-      .signOut()
-      .then(() => console.log('User signed out!'));
-  }
+  const authContext = useContext(AuthContext);
 
   return (
     <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>This is the profile</Text>
-      <Button onPress={signout}>Signout</Button>
+      <Button onPress={authContext.signout}>Signout</Button>
     </Layout>
   );
 };

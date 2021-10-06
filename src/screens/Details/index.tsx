@@ -1,5 +1,4 @@
 import firestore from '@react-native-firebase/firestore';
-import storage from '@react-native-firebase/storage';
 import {
   Divider,
   Icon,
@@ -9,7 +8,7 @@ import {
   useTheme,
 } from '@ui-kitten/components';
 import I18n from 'i18n/i18n';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -17,7 +16,12 @@ import {
   ScrollView,
   View,
 } from 'react-native';
-import {formatMoves, getUsableKeys, isObjKey} from '../../configs/helpers';
+import {
+  formatMoves,
+  getUsableKeys,
+  isObjKey,
+  useImagePath,
+} from '../../configs/helpers';
 import {OpeningProps} from '../Home/types';
 import themedStyles from './styles';
 import Title from './Title';
@@ -28,10 +32,13 @@ const BOARD_SIZE = Dimensions.get('screen').width * 0.95;
 
 const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
   const [opening, setOpening] = useState<OpeningProps | null>(null);
-  const [boardPath, setBoardPath] = useState<string | null>(null);
   const [fieldKeys, setFieldKeys] = useState<string[]>([]);
   const theme = useTheme();
   const styles = useStyleSheet(themedStyles);
+  const imagePath = useImagePath(
+    opening?.imageReference,
+    opening?.imageAccessWay,
+  );
 
   useEffect(() => {
     firestore()
@@ -46,23 +53,6 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
         }
       });
   }, [route.params.uid]);
-
-  useEffect(() => {
-    const {imageAccessWay, imageReference} = opening ?? {};
-
-    switch (imageAccessWay) {
-      case 'cloud-storage':
-        const reference = storage().ref(imageReference);
-        reference.getDownloadURL().then(setBoardPath);
-        break;
-      case 'url':
-        imageReference && setBoardPath(imageReference);
-        break;
-      case 'none':
-      default:
-        return;
-    }
-  }, [opening]);
 
   function renderRow(key: string, _opening: OpeningProps) {
     if (!isObjKey(key, _opening)) {
@@ -105,12 +95,12 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
           <ActivityIndicator />
         ) : (
           <>
-            {boardPath && (
+            {imagePath && (
               <View style={styles.imageContainer}>
                 <Image
                   style={{width: BOARD_SIZE, height: BOARD_SIZE}}
                   source={{
-                    uri: boardPath,
+                    uri: imagePath,
                   }}
                 />
               </View>
