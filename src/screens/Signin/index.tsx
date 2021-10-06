@@ -1,25 +1,17 @@
-import auth from '@react-native-firebase/auth';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Button, Layout, Text} from '@ui-kitten/components';
-import React, {useState} from 'react';
-import {handleError} from '../../configs/helpers';
+import React, {useContext} from 'react';
+import {AuthContext} from 'src/modules/authentication';
 import {ProfileStackParamList} from '../../navigators/types';
 
 type SigninProps = NativeStackScreenProps<ProfileStackParamList, 'Signin'>;
 
 const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
-  const [error, setError] = useState<string>('');
+  const authContext = useContext(AuthContext);
+  const {error} = authContext;
 
   function signIn() {
-    setError('');
-    auth()
-      .signInWithEmailAndPassword('igor.ming@gmail.com', 'Igor1993')
-      .then(() => {
-        console.log('User account created & signed in!');
-      })
-      .catch(err => {
-        setError(handleError(err.code));
-      });
+    authContext.signin('igor.ming@gmail.com', 'Igor1993');
   }
   return (
     <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
