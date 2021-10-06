@@ -1,5 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useTheme} from '@ui-kitten/components';
+import {Icon, useTheme} from '@ui-kitten/components';
 import React from 'react';
 import useStackHeaderOptions from '../configs/headerOptions';
 import DetailsScreen from '../screens/Details';
@@ -18,7 +18,16 @@ const HomeStackNavigator: React.FC = () => {
       <Stack.Screen
         name="Details"
         component={DetailsScreen}
-        options={({route}) => ({title: route.params.title})}
+        options={({route}) => ({
+          title: route.params.title,
+          headerRight: () => (
+            <Icon
+              name="star" // toggle with `star-outline` for not bookmarked
+              fill={theme['color-warning-600']}
+              style={{width: 28, height: 28}}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );

@@ -11,6 +11,7 @@ export default function useStackHeaderOptions(
       backgroundColor: theme['color-basic-1000'],
     },
     headerBackTitleVisible: false,
+    headerTitleAlign: 'center',
   };
 }
 

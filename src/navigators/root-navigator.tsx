@@ -1,12 +1,12 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useTheme} from '@ui-kitten/components';
 import React from 'react';
-import {useOpeningsContext, OpeningsContext} from 'src/modules/openings';
+import {OpeningsContext, useOpeningsContext} from 'src/modules/openings';
 import {useTabOptions} from '../configs/headerOptions';
 import {AuthContext, useAuthenticationContext} from '../modules/authentication';
-import FavoritesStack from './favorites-stack-navigator';
 import SplashScreen from '../screens/Splash';
 import BottomNavigator from './bottom-navigator';
+import FavoritesStack from './favorites-stack-navigator';
 import HomeStackNavigator from './home-stack-navigator';
 import ProfileStackNavigator from './profile-stack-navigator';
 import {HomeTabParamList} from './types';

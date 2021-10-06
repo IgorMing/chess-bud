@@ -23,8 +23,8 @@ Chess openings app to let you keen in the game.
 - [x] configure i18n library
 - [x] replace all hardcoded strings through the project with dynamic i18ned values
 - [x] fetch `variants` data from firestore
-- [ ] add condition to favorites screen toggling between auth/not auth
-- [ ] create bookmark icon to details screen
+- [x] add condition to favorites screen toggling between auth/not auth
+- [x] create bookmark icon to details screen
 - [ ] store bookmark data on firestore _(hint: create a new collection called `users`, having documents by `user.uid` as key, with the fields: bookmarks, lichessUser and chessdotcomUser for this moment.)_
 
 ---
