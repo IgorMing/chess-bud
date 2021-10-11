@@ -18,7 +18,7 @@ function reducer(state: OpeningsState, action: OpeningsAction): OpeningsState {
   }
 }
 
-export function useOpeningsContext() {
+export function useOpeningsContext(): OpeningsContextProps {
   const [state, dispatch] = React.useReducer(reducer, {
     data: [],
     loading: true,
@@ -44,18 +44,16 @@ export function useOpeningsContext() {
     return () => subscriber();
   }, []);
 
-  const openingsContextValue = useMemo(
-    () => ({
-      data: state.data,
-      isLoading: state.loading,
-    }),
-    [state],
-  );
-
-  return openingsContextValue;
+  return {
+    data: state.data,
+    isLoading: state.loading,
+    getBookmarkedData: bookmarked =>
+      state.data.filter(each => bookmarked.includes(each.key)),
+  };
 }
 
 export const OpeningsContext = React.createContext<OpeningsContextProps>({
   data: [],
+  getBookmarkedData: () => [],
   isLoading: true,
 });

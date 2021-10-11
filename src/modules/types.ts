@@ -35,6 +35,7 @@ export type OpeningsAction =
 
 export type OpeningsContextProps = {
   data: OpeningProps[];
+  getBookmarkedData: (bookmarked: string[]) => OpeningProps[];
   isLoading: boolean;
 };
 

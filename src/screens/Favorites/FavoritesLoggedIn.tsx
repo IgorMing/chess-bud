@@ -3,14 +3,20 @@ import React, {useContext} from 'react';
 import {StyleSheet} from 'react-native';
 import ListCard from 'src/components/Card';
 import {OpeningsContext} from 'src/modules/openings';
+import {UserContext} from 'src/modules/user';
 import {OpeningProps} from '../Home/types';
+import EmptyList from './EmptyList';
 
 interface FavoritesLoggedInProps {
   onPress: (item: OpeningProps) => void;
 }
 
 const FavoritesLoggedIn: React.VFC<FavoritesLoggedInProps> = ({onPress}) => {
+  const userContext = useContext(UserContext);
   const openingsContext = useContext(OpeningsContext);
+  const bookmarkedData = openingsContext.getBookmarkedData(
+    userContext.bookmarked,
+  );
 
   function renderItem({item}: {item: OpeningProps}) {
     return (
@@ -29,7 +35,8 @@ const FavoritesLoggedIn: React.VFC<FavoritesLoggedInProps> = ({onPress}) => {
   return (
     <Layout style={styles.container}>
       <List
-        data={openingsContext.data}
+        data={bookmarkedData}
+        ListEmptyComponent={EmptyList}
         renderItem={renderItem}
         keyExtractor={item => item.key}
         ItemSeparatorComponent={Divider}

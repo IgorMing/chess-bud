@@ -26,7 +26,10 @@ Chess openings app to let you keen in the game.
 - [x] add condition to favorites screen toggling between auth/not auth
 - [x] create bookmark icon to details screen
 - [x] move the signin logic to a reducer
-- [ ] store bookmark data on firestore _(hint: create a new collection called `users`, having documents by `user.uid` as key, with the fields: bookmarks, lichessUser and chessdotcomUser for this moment.)_
+- [x] store bookmark data on firestore _(hint: create a new collection called `users`, having documents by `user.uid` as key, with the fields: bookmarks, lichessUser and chessdotcomUser for this moment.)_
+- [x] fetch favorites only
+- [x] create a component for empty favorites results
+- [ ] create couple more openings _(for testing the favorites screen behavior properly)_
 
 ---
 
