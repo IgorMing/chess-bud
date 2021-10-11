@@ -37,3 +37,15 @@ export type OpeningsContextProps = {
   data: OpeningProps[];
   isLoading: boolean;
 };
+
+export type UserState = {
+  bookmarked: string[];
+};
+
+export type UserAction = {type: 'SET_BOOKMARKED'; payload: string[]};
+
+export type UserContextProps = {
+  bookmarked: string[];
+  isBookmarked: (openingId: string) => boolean;
+  toggleBookmark: (openingId: string) => void;
+};

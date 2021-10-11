@@ -52,7 +52,7 @@ export function useOpeningsContext() {
     [state],
   );
 
-  return {openingsContextValue};
+  return openingsContextValue;
 }
 
 export const OpeningsContext = React.createContext<OpeningsContextProps>({

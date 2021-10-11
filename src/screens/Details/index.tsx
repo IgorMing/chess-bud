@@ -8,7 +8,7 @@ import {
   useTheme,
 } from '@ui-kitten/components';
 import I18n from 'i18n/i18n';
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
