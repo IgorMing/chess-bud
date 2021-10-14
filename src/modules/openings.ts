@@ -1,5 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect} from 'react';
 import {OpeningProps} from 'src/screens/Home/types';
 import {OpeningsAction, OpeningsContextProps, OpeningsState} from './types';
 
@@ -48,7 +48,7 @@ export function useOpeningsContext(): OpeningsContextProps {
     data: state.data,
     isLoading: state.loading,
     getBookmarkedData: bookmarked =>
-      state.data.filter(each => bookmarked.includes(each.key)),
+      state.data.filter(each => bookmarked && bookmarked.includes(each.key)),
   };
 }
 

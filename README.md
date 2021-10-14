@@ -29,12 +29,12 @@ Chess openings app to let you keen in the game.
 - [x] store bookmark data on firestore _(hint: create a new collection called `users`, having documents by `user.uid` as key, with the fields: bookmarks, lichessUser and chessdotcomUser for this moment.)_
 - [x] fetch favorites only
 - [x] create a component for empty favorites results
-- [ ] create couple more openings _(for testing the favorites screen behavior properly)_
+- [x] create couple more openings _(for testing the favorites screen behavior properly)_
+- [ ] add input fields for signin/signup
+- [ ] create the profile screen with data about the user _(lichess, chess.com users)_
 
 ---
 
-- [ ] add input fields for signin/signup
-- [ ] create the profile screen with data about the user _(lichess, chess.com users)_
 - [ ] uncomment the ads block before publishing the app
 - [ ] create a screen which provides a way to add new openings to the app _(initially we can hardcode our own user for have access to the screen. Re-check if worth to do this)_
 - [ ] configure remote config

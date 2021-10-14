@@ -5,5 +5,6 @@ export default {
     pros: 'Pros',
     details: 'Details',
     variants: 'Variants',
+    starting_position: 'Starting position',
   },
 };

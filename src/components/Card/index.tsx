@@ -15,7 +15,6 @@ interface ListCardProps {
 }
 
 const BOARD_SIZE = Dimensions.get('screen').width * 0.85;
-
 const ListCard: React.FC<ListCardProps> = ({
   completeDetails,
   details,

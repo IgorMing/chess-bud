@@ -35,6 +35,9 @@ export default StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 16,
   },
+  variantImageContainer: {
+    paddingVertical: 12,
+  },
   moves: {
     paddingTop: 8,
     paddingBottom: 12,

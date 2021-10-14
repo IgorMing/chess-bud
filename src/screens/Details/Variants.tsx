@@ -4,9 +4,9 @@ import firestore, {
 import {Divider, Icon, Layout, Text, useTheme} from '@ui-kitten/components';
 import I18n from 'i18n/i18n';
 import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import {Image, View} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
-import {formatMoves} from '../../configs/helpers';
+import {BOARD_SIZE, formatMoves} from '../../configs/helpers';
 import styles from './styles';
 import Title from './Title';
 import {VariantsProps} from './types';
@@ -37,6 +37,10 @@ const Variants: React.VFC<VariantsProps> = ({openingUid}) => {
       });
   }, [openingUid]);
 
+  if (!variants.length) {
+    return null;
+  }
+
   return (
     <View>
       <Title>{I18n.t('details.variants')}</Title>
@@ -61,9 +65,19 @@ const Variants: React.VFC<VariantsProps> = ({openingUid}) => {
         renderContent={props => (
           <View style={styles.variantContainer}>
             <Text category="p1" appearance="hint" style={styles.moves}>
-              {formatMoves(['e4 e5', 'Nf3 Nc6', 'Bb5 a6', 'Ba4 Nf6', 'O-O'])}
+              {formatMoves(props.moves, props.initialMove)}
             </Text>
             <Text style={styles.text}>{props.details}</Text>
+            {props.imageReference && (
+              <View style={styles.variantImageContainer}>
+                <Image
+                  style={{width: BOARD_SIZE, height: BOARD_SIZE}}
+                  source={{
+                    uri: props.imageReference,
+                  }}
+                />
+              </View>
+            )}
           </View>
         )}
         onChange={setActiveActions}

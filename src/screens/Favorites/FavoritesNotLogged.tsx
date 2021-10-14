@@ -10,7 +10,7 @@ const FavoritesNotLogged: React.VFC<FavoritesNotLoggedProps> = ({onPress}) => {
   return (
     <Layout style={styles.container} level="3">
       <View style={styles.textContainer}>
-        <Text appearance="default" category="p1" style={styles.text}>
+        <Text appearance="default" category="p2" style={styles.text}>
           Looking for bookmarking your prefered openings?
         </Text>
       </View>

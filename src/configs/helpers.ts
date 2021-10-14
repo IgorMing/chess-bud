@@ -1,6 +1,7 @@
 import storage from '@react-native-firebase/storage';
 import {useEffect, useState} from 'react';
-import {ImageAccessWayType, OpeningProps} from '../screens/Home/types';
+import {Dimensions} from 'react-native';
+import {ImageAccessWayType} from '../screens/Home/types';
 
 export function handleError(error: string): string {
   switch (error) {
@@ -18,17 +19,15 @@ export function handleError(error: string): string {
   }
 }
 
-export function formatMoves(moves: string[]) {
+export function formatMoves(moves: string[], initial = 0) {
+  const initialIndex = initial > 0 ? initial - 1 : initial;
   return moves.map(
-    (move, index) => `${index === 0 ? '' : ' '}${index + 1}.${move}`,
+    (move, index) =>
+      `${index === 0 ? '' : ' '}${index + initialIndex + 1}.${move}`,
   );
 }
 
-export function getUsableKeys(object: OpeningProps) {
-  const shown_keys = ['pros', 'cons', 'details'];
-  const keys = Object.keys(object);
-  return keys.filter(key => shown_keys.includes(key));
-}
+export const USABLE_KEYS = ['details', 'starting_position', 'pros', 'cons'];
 
 export function isObjKey<T>(key: any, obj: T): key is keyof T {
   return key in obj;
@@ -61,3 +60,5 @@ export const useImagePath = (
 
   return boardPath;
 };
+
+export const BOARD_SIZE = Dimensions.get('screen').width * 0.95;

@@ -9,17 +9,12 @@ import {
 } from '@ui-kitten/components';
 import I18n from 'i18n/i18n';
 import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, Image, ScrollView, View} from 'react-native';
 import {
-  ActivityIndicator,
-  Dimensions,
-  Image,
-  ScrollView,
-  View,
-} from 'react-native';
-import {
+  BOARD_SIZE,
   formatMoves,
-  getUsableKeys,
   isObjKey,
+  USABLE_KEYS,
   useImagePath,
 } from '../../configs/helpers';
 import {OpeningProps} from '../Home/types';
@@ -27,8 +22,6 @@ import themedStyles from './styles';
 import Title from './Title';
 import {DetailsProps} from './types';
 import Variants from './Variants';
-
-const BOARD_SIZE = Dimensions.get('screen').width * 0.95;
 
 const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
   const [opening, setOpening] = useState<OpeningProps | null>(null);
@@ -49,7 +42,7 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
         const data = result.data() as OpeningProps;
         if (data) {
           setOpening(data);
-          setFieldKeys(getUsableKeys(data));
+          setFieldKeys(USABLE_KEYS);
         }
       });
   }, [route.params.uid]);
