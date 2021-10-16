@@ -6,12 +6,14 @@ import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import type {ReactNode} from 'react';
 import React from 'react';
 import {StatusBar} from 'react-native';
+import {Provider} from 'react-redux';
 import {default as theme} from '../theme.json';
 import RootNavigator from './navigators/root-navigator';
+import {store} from './store';
 
 const App: () => ReactNode = () => {
   return (
-    <>
+    <Provider store={store}>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={{...eva.dark, ...theme}}>
         <NavigationContainer>
@@ -34,7 +36,7 @@ const App: () => ReactNode = () => {
           }}
         />
       )}
-    </>
+    </Provider>
   );
 };
 
