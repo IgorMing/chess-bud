@@ -30,12 +30,17 @@ Chess openings app to let you keen in the game.
 - [x] fetch favorites only
 - [x] create a component for empty favorites results
 - [x] create couple more openings _(for testing the favorites screen behavior properly)_
-- [ ] add input fields for signin/signup
-- [ ] create the profile screen with data about the user _(lichess, chess.com users)_
+- [x] add input fields for signin/signup
+- [x] create the profile screen with data about the user _(lichess, chess.com users)_
+- [ ] move lichess and chess.com user values to authentication's reducer
+- [ ] save both users on firestore
+- [ ] fetch both users on login, after getting the user uid
 
 ---
 
+- [ ] move all firebase calls to `modules` files
 - [ ] uncomment the ads block before publishing the app
+- [ ] get focused on adding new content
 - [ ] create a screen which provides a way to add new openings to the app _(initially we can hardcode our own user for have access to the screen. Re-check if worth to do this)_
 - [ ] configure remote config
 - [ ] fetch allowed users for add and edit openings and variants
