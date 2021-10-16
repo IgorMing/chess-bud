@@ -32,13 +32,14 @@ Chess openings app to let you keen in the game.
 - [x] create couple more openings _(for testing the favorites screen behavior properly)_
 - [x] add input fields for signin/signup
 - [x] create the profile screen with data about the user _(lichess, chess.com users)_
+- [ ] add [redux toolkit](https://redux-toolkit.js.org/), and stop using Context API + custom hooks for sharing state
+
+---
+
 - [ ] make the focus move to next fields with ref API
 - [ ] move lichess and chess.com user values to authentication's reducer
 - [ ] save both users on firestore
 - [ ] fetch both users on login, after getting the user uid
-
----
-
 - [ ] fetch variants board images from cloud storage after details screen loads
 - [ ] move all firebase calls to `modules` files
 - [ ] uncomment the ads block before publishing the app
