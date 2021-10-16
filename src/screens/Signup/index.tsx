@@ -57,41 +57,53 @@ const SignupScreen: React.VFC<SignupProps> = () => {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <Input
+            autoCapitalize="none"
+            autoCorrect={false}
             label="Email*"
             onChangeText={setUsername}
             placeholder="example@domain.com"
+            returnKeyType="next"
             style={styles.input}
             value={username}
           />
           <Input
+            autoCapitalize="none"
+            autoCorrect={false}
             label="Lichess"
             onChangeText={setLichess}
             placeholder="lichess user"
+            returnKeyType="next"
             style={styles.input}
             value={lichessUser}
           />
           <Input
+            autoCapitalize="none"
+            autoCorrect={false}
             label="Chess.com"
             onChangeText={setChess}
             placeholder="chess.com user"
+            returnKeyType="next"
             style={styles.input}
             value={chessUser}
           />
           <Input
+            accessoryRight={renderIcon}
             label="Password*"
             placeholder="Type your password"
             value={password}
-            accessoryRight={renderIcon}
+            returnKeyType="next"
             secureTextEntry={!visiblePassword}
             style={styles.input}
             onChangeText={setPassword}
           />
           <Input
+            accessoryRight={renderIcon}
             caption={() => <Text status="danger">{error}</Text>}
             label="Confirm Password*"
             placeholder="Confirm your password"
             value={confirmPassword}
-            accessoryRight={renderIcon}
+            returnKeyLabel="Create"
+            returnKeyType="join"
             secureTextEntry={!visiblePassword}
             style={styles.input}
             onChangeText={setConfirmPassword}

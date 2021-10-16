@@ -31,26 +31,31 @@ const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <Input
+            autoCapitalize="none"
+            autoCorrect={false}
             label="Email"
             onChangeText={setUsername}
             placeholder="example@domain.com"
+            returnKeyType="next"
             style={styles.input}
             value={username}
           />
           <Input
-            caption={() => <Text status="danger">{error}</Text>}
-            label="Password"
-            placeholder="Type your password"
-            value={password}
             accessoryRight={props => (
               <TouchableWithoutFeedback
                 onPress={() => setVisiblePassword(!visiblePassword)}>
                 <Icon {...props} name={visiblePassword ? 'eye' : 'eye-off'} />
               </TouchableWithoutFeedback>
             )}
+            caption={() => <Text status="danger">{error}</Text>}
+            label="Password"
+            onChangeText={setPassword}
+            placeholder="Type your password"
+            returnKeyLabel="Signin"
+            returnKeyType="join"
             secureTextEntry={!visiblePassword}
             style={styles.input}
-            onChangeText={setPassword}
+            value={password}
           />
 
           <Button onPress={signIn} style={styles.button}>
