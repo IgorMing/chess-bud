@@ -4,10 +4,10 @@ Chess openings app to let you keen in the game.
 
 ## How the things are looking?
 
-|                                                       |                                                          |                                                              |
-| :---------------------------------------------------: | :------------------------------------------------------: | ------------------------------------------------------------ |
-|    ![List screen](./assets/list.png 'List screen')    | ![Details screen](./assets/details.png 'Details screen') | ![Details screen](./assets/favorites.png 'Favorites screen') |
-| ![List screen](./assets/profile.png 'Profile screen') |  ![Details screen](./assets/signin.png 'Signin screen')  | ![Details screen](./assets/signup.png 'Signup screen')       |
+|                                                          |                                                          |                                                                |
+| :------------------------------------------------------: | :------------------------------------------------------: | -------------------------------------------------------------- |
+|     ![List screen](./assets/list.png 'List screen')      | ![Details screen](./assets/details.png 'Details screen') | ![Favorites screen](./assets/favorites.png 'Favorites screen') |
+| ![Profile screen](./assets/profile.png 'Profile screen') |  ![Details screen](./assets/signin.png 'Signin screen')  | ![Signup screen](./assets/signup.png 'Signup screen')          |
 
 ## TODO List
 
