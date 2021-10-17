@@ -1,7 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {Button, Icon, Input, Layout, Text} from '@ui-kitten/components';
+import {Button, Icon, Input, Text} from '@ui-kitten/components';
 import {TouchableWithoutFeedback} from '@ui-kitten/components/devsupport';
-import React, {useContext, useState} from 'react';
+import React, {createRef, useContext, useState} from 'react';
 import {
   Dimensions,
   KeyboardAvoidingView,
@@ -9,10 +9,13 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
+import Container from 'src/components/Container';
 import {AuthContext} from 'src/modules/authentication';
 import {ProfileStackParamList} from '../../navigators/types';
 
 type SigninProps = NativeStackScreenProps<ProfileStackParamList, 'Signin'>;
+
+const passwordRef = createRef<Input>();
 
 const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -26,7 +29,7 @@ const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
   }
 
   return (
-    <Layout style={styles.container}>
+    <Container>
       <ScrollView style={styles.scrollContainer}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -35,6 +38,7 @@ const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
             autoCorrect={false}
             label="Email"
             onChangeText={setUsername}
+            onSubmitEditing={() => passwordRef.current?.focus()}
             placeholder="example@domain.com"
             returnKeyType="next"
             style={styles.input}
@@ -50,7 +54,9 @@ const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
             caption={() => <Text status="danger">{error}</Text>}
             label="Password"
             onChangeText={setPassword}
+            onSubmitEditing={signIn}
             placeholder="Type your password"
+            ref={passwordRef}
             returnKeyLabel="Signin"
             returnKeyType="join"
             secureTextEntry={!visiblePassword}
@@ -58,7 +64,10 @@ const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
             value={password}
           />
 
-          <Button onPress={signIn} style={styles.button}>
+          <Button
+            disabled={!username || !password}
+            onPress={signIn}
+            style={styles.button}>
             Signin
           </Button>
           <Button
@@ -69,7 +78,7 @@ const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
           </Button>
         </KeyboardAvoidingView>
       </ScrollView>
-    </Layout>
+    </Container>
   );
 };
 

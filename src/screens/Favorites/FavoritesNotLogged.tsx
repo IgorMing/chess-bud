@@ -1,6 +1,7 @@
-import {Button, Layout, Text} from '@ui-kitten/components';
+import {Button, Text} from '@ui-kitten/components';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import Container from 'src/components/Container';
 
 interface FavoritesNotLoggedProps {
   onPress: () => void;
@@ -8,14 +9,14 @@ interface FavoritesNotLoggedProps {
 
 const FavoritesNotLogged: React.VFC<FavoritesNotLoggedProps> = ({onPress}) => {
   return (
-    <Layout style={styles.container} level="3">
+    <Container level="3">
       <View style={styles.textContainer}>
         <Text appearance="default" category="p2" style={styles.text}>
           Looking for bookmarking your prefered openings?
         </Text>
       </View>
       <Button onPress={onPress}>Let's sign in</Button>
-    </Layout>
+    </Container>
   );
 };
 

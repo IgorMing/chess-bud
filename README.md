@@ -31,22 +31,39 @@ Chess openings app to let you keen in the game.
 - [x] create a component for empty favorites results
 - [x] create couple more openings _(for testing the favorites screen behavior properly)_
 - [x] add input fields for signin/signup
-- [x] create the profile screen with data about the user _(lichess, chess.com users)_
-- [ ] make the focus move to next fields with ref API
-- [ ] move lichess and chess.com user values to authentication's reducer
-- [ ] save both users on firestore
-- [ ] fetch both users on login, after getting the user uid
+- [x] make the focus move to next fields with ref API
+- [x] improve profile screen with user's data
+- [ ] fetch variants board images from cloud storage after details screen loads
 
 ---
 
-- [ ] fetch variants board images from cloud storage after details screen loads
-- [ ] move all firebase calls to `modules` files
-- [ ] uncomment the ads block before publishing the app
+_TODO on next_
+
+- [ ] add analytics
 - [ ] get focused on adding new content
+- [ ] uncomment the ads block before publishing the app
+
+---
+
+_Less priority_
+
+- [ ] move all firebase calls to `modules` files
+- [ ] import string dictionary from realtime database
+
+---
+
+_Feature: New screen to add new content_
+
 - [ ] create a screen which provides a way to add new openings to the app _(initially we can hardcode our own user for have access to the screen. Re-check if worth to do this)_
 - [ ] configure remote config
 - [ ] fetch allowed users for add and edit openings and variants
-- [ ] import string dictionary from realtime database
+
+_Feature: save Lichess and chess.com users_
+
+- [ ] move lichess and chess.com user values to user's reducer
+- [ ] create the profile screen with data about the user _(lichess, chess.com users)_
+- [ ] save both users on firestore
+- [ ] fetch both users on login, after getting the user uid
 
 ## Known erros
 

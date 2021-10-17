@@ -1,7 +1,7 @@
-import {Divider, Layout, List} from '@ui-kitten/components';
+import {Divider, List} from '@ui-kitten/components';
 import React, {useContext} from 'react';
-import {StyleSheet} from 'react-native';
 import ListCard from 'src/components/Card';
+import Container from 'src/components/Container';
 import {OpeningsContext} from 'src/modules/openings';
 import {UserContext} from 'src/modules/user';
 import {OpeningProps} from '../Home/types';
@@ -33,32 +33,17 @@ const FavoritesLoggedIn: React.VFC<FavoritesLoggedInProps> = ({onPress}) => {
   }
 
   return (
-    <Layout style={styles.container}>
-      <List
-        data={bookmarkedData}
-        ListEmptyComponent={EmptyList}
-        renderItem={renderItem}
-        keyExtractor={item => item.key}
-        ItemSeparatorComponent={Divider}
-      />
-    </Layout>
+    // <Container>
+    <List
+      showsHorizontalScrollIndicator={false}
+      data={bookmarkedData}
+      ListEmptyComponent={EmptyList}
+      renderItem={renderItem}
+      keyExtractor={item => item.key}
+      ItemSeparatorComponent={Divider}
+    />
+    // </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textContainer: {
-    paddingHorizontal: 32,
-    paddingBottom: 16,
-  },
-  text: {
-    fontSize: 18,
-    textAlign: 'center',
-  },
-});
 
 export default FavoritesLoggedIn;
