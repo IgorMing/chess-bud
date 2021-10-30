@@ -35,12 +35,15 @@ Chess openings app to let you keen in the game.
 - [x] make the focus move to next fields with ref API
 - [x] improve profile screen with user's data
 - [x] fetch variants board images from cloud storage after details screen loads
-- [ ] add analytics
+- [ ] add proper app icons
+- [ ] add a splash screen
+- [ ] publish it!
 
 ---
 
 _TODO on next_
 
+- [ ] add analytics
 - [ ] uncomment the ads block before publishing the app
 - [ ] get focused on adding new content
 

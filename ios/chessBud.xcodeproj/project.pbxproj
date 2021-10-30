@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* chessBudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* chessBudTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D61949608422D06E0F1A6FCF /* libPods-chessBud-chessBudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0C8C098677238A1A2B0CD1 /* libPods-chessBud-chessBudTests.a */; };
 		E0DA27540BCFA9EA9F860E05 /* libPods-chessBud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1FC5201C990AFE952380E9 /* libPods-chessBud.a */; };
+		ED87BE76272DEE6E002BD6DA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		EDB75E4726FE5D1300092B6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED5643DF26FBE59200098EE5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -246,9 +246,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED87BE76272DEE6E002BD6DA /* Images.xcassets in Resources */,
 				EDB75E4726FE5D1300092B6E /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
