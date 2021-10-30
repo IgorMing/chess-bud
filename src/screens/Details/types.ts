@@ -17,3 +17,8 @@ export type VariantsData = {
   initialMove?: number;
   imageReference?: string;
 };
+
+export type ImageUrlType = {
+  name: string;
+  url: string;
+};

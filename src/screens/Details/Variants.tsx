@@ -1,6 +1,7 @@
 import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 import {Divider, Icon, Layout, Text, useTheme} from '@ui-kitten/components';
 import I18n from 'i18n/i18n';
 import React, {useEffect, useState} from 'react';
@@ -9,13 +10,12 @@ import Accordion from 'react-native-collapsible/Accordion';
 import {BOARD_SIZE, formatMoves} from '../../configs/helpers';
 import styles from './styles';
 import Title from './Title';
-import {VariantsProps} from './types';
+import {ImageUrlType, VariantsData, VariantsProps} from './types';
 
 const Variants: React.VFC<VariantsProps> = ({openingUid}) => {
-  const [variants, setVariants] = useState<
-    FirebaseFirestoreTypes.DocumentData[]
-  >([]);
   const theme = useTheme();
+  const [variants, setVariants] = useState<VariantsData[]>([]);
+  const [imageUrls, setImageUrls] = useState<ImageUrlType[]>([]);
   const [activeActions, setActiveActions] = useState<number[]>([]);
 
   useEffect(() => {
@@ -33,9 +33,24 @@ const Variants: React.VFC<VariantsProps> = ({openingUid}) => {
           });
         });
 
-        setVariants(_variants);
+        setVariants(_variants as VariantsData[]);
       });
   }, [openingUid]);
+
+  useEffect(() => {
+    const _urls: ImageUrlType[] = [];
+    variants.forEach(variant => {
+      storage()
+        .ref(`${variant.imageReference}.png`)
+        .getDownloadURL()
+        .then(url => {
+          console.log({url});
+          _urls.push({name: variant.name, url});
+        })
+        .catch(console.log);
+    });
+    setImageUrls(_urls);
+  }, [variants]);
 
   if (!variants.length) {
     return null;
@@ -62,24 +77,29 @@ const Variants: React.VFC<VariantsProps> = ({openingUid}) => {
           </Layout>
         )}
         keyExtractor={item => item.name}
-        renderContent={props => (
-          <View style={styles.variantContainer}>
-            <Text category="p1" appearance="hint" style={styles.moves}>
-              {formatMoves(props.moves, props.initialMove)}
-            </Text>
-            <Text style={styles.text}>{props.details}</Text>
-            {props.imageReference && (
-              <View style={styles.variantImageContainer}>
-                <Image
-                  style={{width: BOARD_SIZE, height: BOARD_SIZE}}
-                  source={{
-                    uri: props.imageReference,
-                  }}
-                />
-              </View>
-            )}
-          </View>
-        )}
+        renderContent={props => {
+          const indexFound = imageUrls.findIndex(
+            each => each.name === props.name,
+          );
+          return (
+            <View style={styles.variantContainer}>
+              <Text category="p1" appearance="hint" style={styles.moves}>
+                {formatMoves(props.moves, props.initialMove)}
+              </Text>
+              {indexFound > -1 && (
+                <View style={styles.variantImageContainer}>
+                  <Image
+                    style={{width: BOARD_SIZE, height: BOARD_SIZE}}
+                    source={{
+                      uri: imageUrls[indexFound].url,
+                    }}
+                  />
+                </View>
+              )}
+              <Text style={styles.text}>{props.details}</Text>
+            </View>
+          );
+        }}
         onChange={setActiveActions}
       />
     </View>
