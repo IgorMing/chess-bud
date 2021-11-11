@@ -1,5 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
-import React, {useEffect} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import {OpeningProps} from 'src/screens/Home/types';
 import {OpeningsAction, OpeningsContextProps, OpeningsState} from './types';
 
@@ -19,7 +19,7 @@ function reducer(state: OpeningsState, action: OpeningsAction): OpeningsState {
 }
 
 export function useOpeningsContext(): OpeningsContextProps {
-  const [state, dispatch] = React.useReducer(reducer, {
+  const [state, dispatch] = useReducer(reducer, {
     data: [],
     loading: true,
   });
