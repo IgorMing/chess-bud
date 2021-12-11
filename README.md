@@ -36,8 +36,8 @@ Chess openings app to let you keen in the game.
 - [x] improve profile screen with user's data
 - [x] fetch variants board images from cloud storage after details screen loads
 - [x] add proper app icons
-- [ ] add a splash screen
-- [ ] publish it!
+- [x] add a splash screen
+- [] publish it!
 
 ---
 
