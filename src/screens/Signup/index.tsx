@@ -50,6 +50,7 @@ const SignupScreen: React.VFC<SignupProps> = () => {
         console.log('User account created & signed in!', user);
       })
       .catch(err => {
+        console.log(err.code);
         setError(handleError(err.code));
       });
   }

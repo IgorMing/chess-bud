@@ -12,7 +12,7 @@ const EmptyList: React.FC = () => {
         width,
         justifyContent: 'center',
       }}>
-      <Text category="h4" style={{textAlign: 'center'}}>
+      <Text category="h4" style={{textAlign: 'center', paddingHorizontal: 40}}>
         You have no favorite openings set
       </Text>
     </View>

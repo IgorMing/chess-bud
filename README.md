@@ -37,12 +37,14 @@ Chess openings app to let you keen in the game.
 - [x] fetch variants board images from cloud storage after details screen loads
 - [x] add proper app icons
 - [x] add a splash screen
-- [ ] publish it!
+- [x] publish it!
 
 ---
 
 _TODO on next_
 
+- [ ] check/improve offline behavior
+- [ ] go to root screen after double clicking the navigator icon
 - [ ] add analytics
 - [ ] uncomment the ads block before publishing the app
 - [ ] get focused on adding new content

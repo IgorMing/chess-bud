@@ -1,11 +1,23 @@
+import NetInfo from '@react-native-community/netinfo';
 import {Divider, Layout, List} from '@ui-kitten/components';
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ListCard from 'src/components/Card';
 import {OpeningsContext} from 'src/modules/openings';
+import Offline from '../Offline';
 import {HomeProps, OpeningProps} from './types';
 
 const Home: React.VFC<HomeProps> = ({navigation}) => {
+  const [offline, setOffline] = useState(false);
+
   const openingsContext = useContext(OpeningsContext);
+
+  useEffect(() => {
+    const removeNetInfoSubscription = NetInfo.addEventListener(state => {
+      const isOffline = !(state.isConnected && state.isInternetReachable);
+      setOffline(isOffline);
+    });
+    return removeNetInfoSubscription();
+  }, []);
 
   function renderItem({item}: {item: OpeningProps}) {
     return (
@@ -18,6 +30,10 @@ const Home: React.VFC<HomeProps> = ({navigation}) => {
         title={item.name}
       />
     );
+  }
+
+  if (offline) {
+    return <Offline />;
   }
 
   return (
