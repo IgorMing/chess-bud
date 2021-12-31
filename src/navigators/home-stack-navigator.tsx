@@ -20,7 +20,11 @@ const HomeStackNavigator: React.FC = () => {
 
   return (
     <Stack.Navigator screenOptions={headerOptions}>
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{title: 'Openings'}}
+      />
       <Stack.Screen
         name="Details"
         component={DetailsScreen}
