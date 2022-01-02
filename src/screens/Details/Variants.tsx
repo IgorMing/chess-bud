@@ -12,7 +12,7 @@ import styles from './styles';
 import Title from './Title';
 import {ImageUrlType, VariantsData, VariantsProps} from './types';
 
-const Variants: React.VFC<VariantsProps> = ({openingUid}) => {
+const Variants: React.VFC<VariantsProps> = ({initialIndex, openingUid}) => {
   const theme = useTheme();
   const [variants, setVariants] = useState<VariantsData[]>([]);
   const [imageUrls, setImageUrls] = useState<ImageUrlType[]>([]);
@@ -84,7 +84,7 @@ const Variants: React.VFC<VariantsProps> = ({openingUid}) => {
           return (
             <View style={styles.variantContainer}>
               <Text category="p1" appearance="hint" style={styles.moves}>
-                {formatMoves(props.moves, props.initialMove)}
+                {formatMoves(props.moves, initialIndex)}
               </Text>
               {indexFound > -1 && (
                 <View style={styles.variantImageContainer}>

@@ -19,8 +19,15 @@ export function handleError(error: string): string {
   }
 }
 
-export function formatMoves(moves: string[], initial = 0) {
-  const initialIndex = initial > 0 ? initial - 1 : initial;
+export function getInitialMove(moves: string[]): number {
+  return moves[moves.length - 1].split(' ').length === 2
+    ? moves.length
+    : moves.length - 1;
+}
+
+export function formatMoves(moves: string[], initial?: number) {
+  const initialIndex = initial ?? 0;
+
   return moves.map(
     (move, index) =>
       `${index === 0 ? '' : ' '}${index + initialIndex + 1}.${move}`,

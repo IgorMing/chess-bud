@@ -13,6 +13,7 @@ import {ActivityIndicator, Image, ScrollView, View} from 'react-native';
 import {
   BOARD_SIZE,
   formatMoves,
+  getInitialMove,
   isObjKey,
   USABLE_KEYS,
   useImagePath,
@@ -115,7 +116,10 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
               </View>
             ))}
 
-            <Variants openingUid={route.params.uid} />
+            <Variants
+              openingUid={route.params.uid}
+              initialIndex={getInitialMove(opening.moves)}
+            />
           </>
         )}
       </ScrollView>

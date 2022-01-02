@@ -8,6 +8,7 @@ export type DetailsProps = NativeStackScreenProps<
 
 export type VariantsProps = {
   openingUid: string;
+  initialIndex?: number;
 };
 
 export type VariantsData = {
