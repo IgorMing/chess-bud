@@ -15,7 +15,6 @@ export type VariantsData = {
   name: string;
   moves: string[];
   details: string;
-  initialMove?: number;
   imageReference?: string;
 };
 
