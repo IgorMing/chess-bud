@@ -105,13 +105,19 @@ const DetailsScreen: React.FunctionComponent<DetailsProps> = ({ route }) => {
               </Text>
             </View>
 
-            {fieldKeys.map(key => (
-              <View key={key} style={styles.itemContainer}>
-                <Title>{I18n.t(`details.${key}`)}</Title>
-                <Divider />
-                {renderRow(key, opening)}
-              </View>
-            ))}
+            {fieldKeys.map(key => {
+              // @ts-ignore
+              if (!opening[key]) {
+                return null;
+              }
+              return (
+                <View key={key} style={styles.itemContainer}>
+                  <Title>{I18n.t(`details.${key}`)}</Title>
+                  <Divider />
+                  {renderRow(key, opening)}
+                </View>
+              );
+            })}
 
             <Variants
               openingUid={route.params.uid}

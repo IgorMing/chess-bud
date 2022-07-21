@@ -54,4 +54,4 @@ export const useImagePath = (fileName?: string) => {
   return boardPath;
 };
 
-export const BOARD_SIZE = Dimensions.get('screen').width * 0.95;
+export const BOARD_SIZE = Dimensions.get('screen').width * 0.9;

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -21,7 +21,7 @@ export default StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    lineHeight: 22,
+    lineHeight: 24,
     textAlign: 'justify',
   },
   titleContainer: {
@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
   variantContainer: {
     paddingTop: 8,
-    paddingBottom: 16,
+    paddingBottom: 22,
   },
   variantImageContainer: {
     paddingVertical: 12,
