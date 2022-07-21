@@ -1,14 +1,12 @@
-import {Card, Text} from '@ui-kitten/components';
+import { Card, Text } from '@ui-kitten/components';
 import React from 'react';
-import {Dimensions, Image, View} from 'react-native';
-import {formatMoves, useImagePath} from 'src/configs/helpers';
-import {ImageAccessWayType} from 'src/screens/Home/types';
+import { Dimensions, Image, View } from 'react-native';
+import { formatMoves, useImagePath } from 'src/configs/helpers';
 
 interface ListCardProps {
   completeDetails?: boolean;
   details: string;
-  imageRef?: string;
-  imageAccessWay?: ImageAccessWayType;
+  fileName: string;
   moves: string[];
   onPress: () => void;
   title: string;
@@ -18,17 +16,16 @@ const BOARD_SIZE = Dimensions.get('screen').width * 0.85;
 const ListCard: React.FC<ListCardProps> = ({
   completeDetails,
   details,
-  imageAccessWay,
-  imageRef,
+  fileName,
   moves,
   onPress,
   title,
 }) => {
-  const imagePath = useImagePath(imageRef, imageAccessWay);
+  const imagePath = useImagePath(fileName);
 
   return (
     <Card
-      style={{marginBottom: 8}}
+      style={{ marginBottom: 8 }}
       onPress={onPress}
       footer={footerProps => (
         <Text {...footerProps} appearance="hint">
@@ -43,13 +40,13 @@ const ListCard: React.FC<ListCardProps> = ({
       <>
         <Text
           numberOfLines={completeDetails ? undefined : 3}
-          style={{textAlign: 'justify'}}>
+          style={{ textAlign: 'justify' }}>
           {details}
         </Text>
         {imagePath && (
-          <View style={{paddingVertical: 20}}>
+          <View style={{ paddingVertical: 20 }}>
             <Image
-              style={{width: BOARD_SIZE, height: BOARD_SIZE}}
+              style={{ width: BOARD_SIZE, height: BOARD_SIZE }}
               source={{
                 uri: imagePath,
               }}

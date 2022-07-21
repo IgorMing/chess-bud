@@ -1,14 +1,13 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import firestore from '@react-native-firebase/firestore';
-import {Icon, useTheme} from '@ui-kitten/components';
-import React, {useContext} from 'react';
-import {TouchableOpacity} from 'react-native';
-import {AuthContext} from 'src/modules/authentication';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Icon, useTheme } from '@ui-kitten/components';
+import React, { useContext } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { AuthContext } from 'src/modules/authentication';
+import { UserContext } from 'src/modules/user';
 import useStackHeaderOptions from '../configs/headerOptions';
 import DetailsScreen from '../screens/Details';
 import HomeScreen from '../screens/Home/index';
-import {HomeStackParamList} from './types';
-import {UserContext} from 'src/modules/user';
+import { HomeStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -23,19 +22,19 @@ const HomeStackNavigator: React.FC = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{title: 'Openings'}}
+        options={{ title: 'Openings' }}
       />
       <Stack.Screen
         name="Details"
         component={DetailsScreen}
-        options={({route}) => ({
+        options={({ route }) => ({
           title: route.params.title,
           headerRight: () => {
             if (!authContext.isLoggedIn) {
               return null;
             }
 
-            const {uid} = route.params;
+            const { uid } = route.params;
             const iconName = userContext.isBookmarked(uid)
               ? 'star'
               : 'star-outline';
@@ -45,7 +44,7 @@ const HomeStackNavigator: React.FC = () => {
                 <Icon
                   name={iconName}
                   fill={theme['color-warning-600']}
-                  style={{width: 28, height: 28}}
+                  style={{ width: 28, height: 28 }}
                 />
               </TouchableOpacity>
             );

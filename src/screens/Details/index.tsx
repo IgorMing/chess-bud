@@ -8,8 +8,8 @@ import {
   useTheme,
 } from '@ui-kitten/components';
 import I18n from 'i18n/i18n';
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Image, ScrollView, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Image, ScrollView, View } from 'react-native';
 import {
   BOARD_SIZE,
   formatMoves,
@@ -18,21 +18,18 @@ import {
   USABLE_KEYS,
   useImagePath,
 } from '../../configs/helpers';
-import {OpeningProps} from '../Home/types';
+import { OpeningProps } from '../Home/types';
 import themedStyles from './styles';
 import Title from './Title';
-import {DetailsProps} from './types';
+import { DetailsProps } from './types';
 import Variants from './Variants';
 
-const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
+const DetailsScreen: React.VFC<DetailsProps> = ({ route }) => {
   const [opening, setOpening] = useState<OpeningProps | null>(null);
   const [fieldKeys, setFieldKeys] = useState<string[]>([]);
   const theme = useTheme();
   const styles = useStyleSheet(themedStyles);
-  const imagePath = useImagePath(
-    opening?.imageReference,
-    opening?.imageAccessWay,
-  );
+  const imagePath = useImagePath(opening?.fileName);
 
   useEffect(() => {
     firestore()
@@ -92,7 +89,7 @@ const DetailsScreen: React.VFC<DetailsProps> = ({route}) => {
             {imagePath && (
               <View style={styles.imageContainer}>
                 <Image
-                  style={{width: BOARD_SIZE, height: BOARD_SIZE}}
+                  style={{ width: BOARD_SIZE, height: BOARD_SIZE }}
                   source={{
                     uri: imagePath,
                   }}

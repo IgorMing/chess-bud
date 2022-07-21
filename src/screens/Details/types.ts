@@ -1,5 +1,5 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {HomeStackParamList} from '../../navigators/types';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { HomeStackParamList } from '../../navigators/types';
 
 export type DetailsProps = NativeStackScreenProps<
   HomeStackParamList,
@@ -15,7 +15,7 @@ export type VariantsData = {
   name: string;
   moves: string[];
   details: string;
-  imageReference?: string;
+  fileName?: string;
 };
 
 export type ImageUrlType = {

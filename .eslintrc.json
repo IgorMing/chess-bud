@@ -1,10 +1,11 @@
 {
   "root": true,
-  "extends": ["@react-native-community", "prettier"],
-  "plugins": ["import"],
+  "extends": ["@react-native-community", "prettier", "plugin:react-hooks/recommended"],
+  "plugins": ["import", "react-hooks"],
   "rules": {
     "import/no-unresolved": "error",
-    "react-native/no-inline-styles": "off" // remove this later
+    "react-native/no-inline-styles": "off",
+    "prettier/prettier": "off"
   },
   "settings": {
     "import/parsers": {

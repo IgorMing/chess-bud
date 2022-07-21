@@ -2,17 +2,17 @@ import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
-import {Divider, Icon, Layout, Text, useTheme} from '@ui-kitten/components';
+import { Divider, Icon, Layout, Text, useTheme } from '@ui-kitten/components';
 import I18n from 'i18n/i18n';
-import React, {useEffect, useState} from 'react';
-import {Image, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, View } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
-import {BOARD_SIZE, formatMoves} from '../../configs/helpers';
+import { BOARD_SIZE, formatMoves } from '../../configs/helpers';
 import styles from './styles';
 import Title from './Title';
-import {ImageUrlType, VariantsData, VariantsProps} from './types';
+import { ImageUrlType, VariantsData, VariantsProps } from './types';
 
-const Variants: React.VFC<VariantsProps> = ({initialIndex, openingUid}) => {
+const Variants: React.VFC<VariantsProps> = ({ initialIndex, openingUid }) => {
   const theme = useTheme();
   const [variants, setVariants] = useState<VariantsData[]>([]);
   const [imageUrls, setImageUrls] = useState<ImageUrlType[]>([]);
@@ -41,11 +41,11 @@ const Variants: React.VFC<VariantsProps> = ({initialIndex, openingUid}) => {
     const _urls: ImageUrlType[] = [];
     variants.forEach(variant => {
       storage()
-        .ref(`${variant.imageReference}.png`)
+        .ref(variant.fileName)
         .getDownloadURL()
         .then(url => {
-          console.log({url});
-          _urls.push({name: variant.name, url});
+          console.log({ url });
+          _urls.push({ name: variant.name, url });
         })
         .catch(console.log);
     });
@@ -89,7 +89,7 @@ const Variants: React.VFC<VariantsProps> = ({initialIndex, openingUid}) => {
               {indexFound > -1 && (
                 <View style={styles.variantImageContainer}>
                   <Image
-                    style={{width: BOARD_SIZE, height: BOARD_SIZE}}
+                    style={{ width: BOARD_SIZE, height: BOARD_SIZE }}
                     source={{
                       uri: imageUrls[indexFound].url,
                     }}

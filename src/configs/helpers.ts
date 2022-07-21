@@ -1,7 +1,6 @@
 import storage from '@react-native-firebase/storage';
-import {useEffect, useState} from 'react';
-import {Dimensions} from 'react-native';
-import {ImageAccessWayType} from '../screens/Home/types';
+import { useEffect, useState } from 'react';
+import { Dimensions } from 'react-native';
 
 export function handleError(error: string): string {
   switch (error) {
@@ -40,30 +39,17 @@ export function isObjKey<T>(key: any, obj: T): key is keyof T {
   return key in obj;
 }
 
-export const useImagePath = (
-  imageReference?: string,
-  imageAccessWay?: ImageAccessWayType,
-) => {
+export const useImagePath = (fileName?: string) => {
   const [boardPath, setBoardPath] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!imageReference || !imageAccessWay) {
+    if (!fileName) {
       return;
     }
 
-    switch (imageAccessWay) {
-      case 'cloud-storage':
-        const reference = storage().ref(imageReference);
-        reference.getDownloadURL().then(setBoardPath);
-        break;
-      case 'url':
-        imageReference && setBoardPath(imageReference);
-        break;
-      case 'none':
-      default:
-        return;
-    }
-  }, [imageReference, imageAccessWay]);
+    const reference = storage().ref(fileName);
+    reference.getDownloadURL().then(setBoardPath);
+  }, [fileName]);
 
   return boardPath;
 };

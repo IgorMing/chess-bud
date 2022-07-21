@@ -1,5 +1,5 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {HomeStackParamList} from '../../navigators/types';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { HomeStackParamList } from '../../navigators/types';
 
 export type HomeProps = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 
@@ -13,8 +13,7 @@ export type OpeningProps = {
   pros: string[];
   cons: string[];
   starting_position?: string;
-  imageReference?: string;
-  imageAccessWay: ImageAccessWayType;
+  fileName: string;
 };
 
 export type OpeningsInfo = {
