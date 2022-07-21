@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": "@react-native-community",
+  "extends": ["@react-native-community", "prettier"],
   "plugins": ["import"],
   "rules": {
     "import/no-unresolved": "error",
