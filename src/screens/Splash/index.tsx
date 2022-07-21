@@ -1,9 +1,9 @@
-import {useTheme} from '@ui-kitten/components';
+import { useTheme } from '@ui-kitten/components';
 import React from 'react';
-import {ActivityIndicator, View} from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import styles from './styles';
 
-const SplashScreen: React.VFC = () => {
+const SplashScreen: React.FunctionComponent = () => {
   const theme = useTheme();
 
   return (

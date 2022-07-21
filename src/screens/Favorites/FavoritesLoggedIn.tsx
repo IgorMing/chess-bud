@@ -10,7 +10,9 @@ interface FavoritesLoggedInProps {
   onPress: (item: OpeningProps) => void;
 }
 
-const FavoritesLoggedIn: React.VFC<FavoritesLoggedInProps> = ({ onPress }) => {
+const FavoritesLoggedIn: React.FunctionComponent<FavoritesLoggedInProps> = ({
+  onPress,
+}) => {
   const userContext = useContext(UserContext);
   const openingsContext = useContext(OpeningsContext);
   const bookmarkedData = openingsContext.getBookmarkedData(

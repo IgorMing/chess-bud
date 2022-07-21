@@ -1,21 +1,23 @@
 import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
-import storage from '@react-native-firebase/storage';
 import { Divider, Icon, Layout, Text, useTheme } from '@ui-kitten/components';
 import I18n from 'i18n/i18n';
 import React, { useEffect, useState } from 'react';
-import { Image, View } from 'react-native';
+import { View } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
-import { BOARD_SIZE, formatMoves } from '../../configs/helpers';
+import { formatMoves } from '../../configs/helpers';
 import styles from './styles';
 import Title from './Title';
-import { ImageUrlType, VariantsData, VariantsProps } from './types';
+import { VariantsData, VariantsProps } from './types';
 
-const Variants: React.VFC<VariantsProps> = ({ initialIndex, openingUid }) => {
+const Variants: React.FunctionComponent<VariantsProps> = ({
+  initialIndex,
+  openingUid,
+}) => {
   const theme = useTheme();
   const [variants, setVariants] = useState<VariantsData[]>([]);
-  const [imageUrls, setImageUrls] = useState<ImageUrlType[]>([]);
+  // const [imageUrls, setImageUrls] = useState<ImageUrlType[]>([]);
   const [activeActions, setActiveActions] = useState<number[]>([]);
 
   useEffect(() => {
@@ -37,20 +39,20 @@ const Variants: React.VFC<VariantsProps> = ({ initialIndex, openingUid }) => {
       });
   }, [openingUid]);
 
-  useEffect(() => {
-    const _urls: ImageUrlType[] = [];
-    variants.forEach(variant => {
-      storage()
-        .ref(variant.fileName)
-        .getDownloadURL()
-        .then(url => {
-          console.log({ url });
-          _urls.push({ name: variant.name, url });
-        })
-        .catch(console.log);
-    });
-    setImageUrls(_urls);
-  }, [variants]);
+  // useEffect(() => {
+  //   const _urls: ImageUrlType[] = [];
+  //   variants.forEach(variant => {
+  //     storage()
+  //       .ref(variant.fileName)
+  //       .getDownloadURL()
+  //       .then(url => {
+  //         console.log({ url });
+  //         _urls.push({ name: variant.name, url });
+  //       })
+  //       .catch(console.log);
+  //   });
+  //   setImageUrls(_urls);
+  // }, [variants]);
 
   if (!variants.length) {
     return null;
@@ -78,15 +80,15 @@ const Variants: React.VFC<VariantsProps> = ({ initialIndex, openingUid }) => {
         )}
         keyExtractor={item => item.name}
         renderContent={props => {
-          const indexFound = imageUrls.findIndex(
-            each => each.name === props.name,
-          );
+          // const indexFound = imageUrls.findIndex(
+          //   each => each.name === props.name,
+          // );
           return (
             <View style={styles.variantContainer}>
               <Text category="p1" appearance="hint" style={styles.moves}>
                 {formatMoves(props.moves, initialIndex)}
               </Text>
-              {indexFound > -1 && (
+              {/* {indexFound > -1 && (
                 <View style={styles.variantImageContainer}>
                   <Image
                     style={{ width: BOARD_SIZE, height: BOARD_SIZE }}
@@ -95,7 +97,7 @@ const Variants: React.VFC<VariantsProps> = ({ initialIndex, openingUid }) => {
                     }}
                   />
                 </View>
-              )}
+              )} */}
               <Text style={styles.text}>{props.details}</Text>
             </View>
           );

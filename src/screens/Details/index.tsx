@@ -24,7 +24,7 @@ import Title from './Title';
 import { DetailsProps } from './types';
 import Variants from './Variants';
 
-const DetailsScreen: React.VFC<DetailsProps> = ({ route }) => {
+const DetailsScreen: React.FunctionComponent<DetailsProps> = ({ route }) => {
   const [opening, setOpening] = useState<OpeningProps | null>(null);
   const [fieldKeys, setFieldKeys] = useState<string[]>([]);
   const theme = useTheme();

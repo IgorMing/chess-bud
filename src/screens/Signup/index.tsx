@@ -1,8 +1,8 @@
 import auth from '@react-native-firebase/auth';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {Button, Icon, Input, Text} from '@ui-kitten/components';
-import {TouchableWithoutFeedback} from '@ui-kitten/components/devsupport';
-import React, {createRef, useState} from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Button, Icon, Input, Text } from '@ui-kitten/components';
+import { TouchableWithoutFeedback } from '@ui-kitten/components/devsupport';
+import React, { createRef, useState } from 'react';
 import {
   ImageProps,
   KeyboardAvoidingView,
@@ -11,15 +11,15 @@ import {
   StyleSheet,
 } from 'react-native';
 import Container from 'src/components/Container';
-import {ProfileStackParamList} from 'src/navigators/types';
-import {handleError} from '../../configs/helpers';
+import { ProfileStackParamList } from 'src/navigators/types';
+import { handleError } from '../../configs/helpers';
 
 type SignupProps = NativeStackScreenProps<ProfileStackParamList, 'Signup'>;
 
 const passwordRef = createRef<Input>();
 const confirmPasswordRef = createRef<Input>();
 
-const SignupScreen: React.VFC<SignupProps> = () => {
+const SignupScreen: React.FunctionComponent<SignupProps> = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');

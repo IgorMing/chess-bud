@@ -1,13 +1,15 @@
-import {Button, Text} from '@ui-kitten/components';
+import { Button, Text } from '@ui-kitten/components';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Container from 'src/components/Container';
 
 interface FavoritesNotLoggedProps {
   onPress: () => void;
 }
 
-const FavoritesNotLogged: React.VFC<FavoritesNotLoggedProps> = ({onPress}) => {
+const FavoritesNotLogged: React.FunctionComponent<FavoritesNotLoggedProps> = ({
+  onPress,
+}) => {
   return (
     <Container level="3">
       <View style={styles.textContainer}>

@@ -1,7 +1,7 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {Button, Icon, Input, Text} from '@ui-kitten/components';
-import {TouchableWithoutFeedback} from '@ui-kitten/components/devsupport';
-import React, {createRef, useContext, useState} from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Button, Icon, Input, Text } from '@ui-kitten/components';
+import { TouchableWithoutFeedback } from '@ui-kitten/components/devsupport';
+import React, { createRef, useContext, useState } from 'react';
 import {
   Dimensions,
   KeyboardAvoidingView,
@@ -10,19 +10,19 @@ import {
   StyleSheet,
 } from 'react-native';
 import Container from 'src/components/Container';
-import {AuthContext} from 'src/modules/authentication';
-import {ProfileStackParamList} from '../../navigators/types';
+import { AuthContext } from 'src/modules/authentication';
+import { ProfileStackParamList } from '../../navigators/types';
 
 type SigninProps = NativeStackScreenProps<ProfileStackParamList, 'Signin'>;
 
 const passwordRef = createRef<Input>();
 
-const SigninScreen: React.VFC<SigninProps> = ({navigation}) => {
+const SigninScreen: React.FunctionComponent<SigninProps> = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
   const authContext = useContext(AuthContext);
-  const {error} = authContext;
+  const { error } = authContext;
 
   function signIn() {
     authContext.signin(username, password);
