@@ -10,6 +10,7 @@ import { formatMoves } from '../../configs/helpers';
 import styles from './styles';
 import Title from './Title';
 import { VariantsData, VariantsProps } from './types';
+import VariantBoard from './VariantBoard';
 
 const Variants: React.FunctionComponent<VariantsProps> = ({
   initialIndex,
@@ -17,7 +18,6 @@ const Variants: React.FunctionComponent<VariantsProps> = ({
 }) => {
   const theme = useTheme();
   const [variants, setVariants] = useState<VariantsData[]>([]);
-  // const [imageUrls, setImageUrls] = useState<ImageUrlType[]>([]);
   const [activeActions, setActiveActions] = useState<number[]>([]);
 
   useEffect(() => {
@@ -38,21 +38,6 @@ const Variants: React.FunctionComponent<VariantsProps> = ({
         setVariants(_variants as VariantsData[]);
       });
   }, [openingUid]);
-
-  // useEffect(() => {
-  //   const _urls: ImageUrlType[] = [];
-  //   variants.forEach(variant => {
-  //     storage()
-  //       .ref(variant.fileName)
-  //       .getDownloadURL()
-  //       .then(url => {
-  //         console.log({ url });
-  //         _urls.push({ name: variant.name, url });
-  //       })
-  //       .catch(console.log);
-  //   });
-  //   setImageUrls(_urls);
-  // }, [variants]);
 
   if (!variants.length) {
     return null;
@@ -80,24 +65,12 @@ const Variants: React.FunctionComponent<VariantsProps> = ({
         )}
         keyExtractor={item => item.name}
         renderContent={props => {
-          // const indexFound = imageUrls.findIndex(
-          //   each => each.name === props.name,
-          // );
           return (
             <View style={styles.variantContainer}>
               <Text category="p1" appearance="hint" style={styles.moves}>
                 {formatMoves(props.moves, initialIndex)}
               </Text>
-              {/* {indexFound > -1 && (
-                <View style={styles.variantImageContainer}>
-                  <Image
-                    style={{ width: BOARD_SIZE, height: BOARD_SIZE }}
-                    source={{
-                      uri: imageUrls[indexFound].url,
-                    }}
-                  />
-                </View>
-              )} */}
+              <VariantBoard fileName={props.fileName} />
               <Text style={styles.text}>{props.details}</Text>
             </View>
           );

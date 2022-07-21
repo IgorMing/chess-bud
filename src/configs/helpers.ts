@@ -40,7 +40,7 @@ export function isObjKey<T>(key: any, obj: T): key is keyof T {
 }
 
 export const useImagePath = (fileName?: string) => {
-  const [boardPath, setBoardPath] = useState<string | null>(null);
+  const [boardPath, setBoardPath] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     if (!fileName) {
