@@ -1,12 +1,12 @@
 import * as eva from '@eva-design/eva';
-import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
-import {NavigationContainer} from '@react-navigation/native';
-import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
-import {EvaIconsPack} from '@ui-kitten/eva-icons';
-import React, {ReactNode, useLayoutEffect} from 'react';
-import {StatusBar} from 'react-native';
+import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob';
+import { NavigationContainer } from '@react-navigation/native';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import React, { ReactNode, useLayoutEffect } from 'react';
+import { StatusBar } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import {default as theme} from './theme.json';
+import { default as theme } from './theme.json';
 import RootNavigator from './src/navigators/root-navigator';
 
 const App: () => ReactNode = () => {
@@ -17,7 +17,7 @@ const App: () => ReactNode = () => {
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={{...eva.dark, ...theme}}>
+      <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
         <NavigationContainer>
           <StatusBar barStyle={'light-content'} />
           <RootNavigator />
