@@ -58,3 +58,4 @@ buck-out/
 /ios/Pods/
 
 *.hprof
+*.aab
