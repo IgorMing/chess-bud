@@ -13,7 +13,6 @@ export function handleError(error: string): string {
     case 'auth/weak-password':
       return 'The password is weak';
     default:
-      console.log(error);
       return 'An unexpected error happened';
   }
 }
