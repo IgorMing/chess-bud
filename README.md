@@ -1,6 +1,6 @@
 # Chess bud
 
-Chess openings app to let you keen in the game.
+Chess openings app to keep you keen on the game's history.
 
 ## How are the things looking?
 
